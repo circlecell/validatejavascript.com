@@ -1,0 +1,33 @@
+{
+  "name": "eslint.io",
+  "version": "0.0.0",
+  "description": "Browser version of ESLint",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "install": "npm run browserify-eslint",
+    "browserify-eslint": "cd node_modules/eslint-orig/ && npm install && npm run browserify"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/circlecell/eslint.io.git"
+  },
+  "keywords": [
+    "eslint",
+    "jslint",
+    "lint"
+  ],
+  "author": "Circlecell",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/circlecell/eslint.io/issues"
+  },
+  "homepage": "https://github.com/circlecell/eslint.io#readme",
+  "devDependencies": {
+    "eslint": "^3.5.0"
+
+},
+"dependencies": {
+    "eslint-orig": "https://github.com/eslint/eslint"
+}
+}
