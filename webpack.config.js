@@ -1,7 +1,9 @@
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+var StringReplacePlugin = require("string-replace-webpack-plugin");
 const { port } = require('minimist')(process.argv.slice(2));
+const webpack = require('webpack');
 
 const { NODE_ENV } = process.env;
 
@@ -18,7 +20,8 @@ const plugins = [
 
             return order.indexOf(nameA) - order.indexOf(nameB);
         }
-    })
+    }),
+    new webpack.ContextReplacementPlugin(/eslint\/webpack/, /$^/)
 ];
 
 if (NODE_ENV === 'development') {
@@ -30,12 +33,11 @@ if (NODE_ENV === 'development') {
 }
 
 entry.app.push(
+    'babel-polyfill',
     './src/index'
 );
 
-plugins.push(new CopyWebpackPlugin([
-	//{ from: 'index.html' },
-]));
+plugins.push(new CopyWebpackPlugin([]));
 
 module.exports = {
     entry,
@@ -47,11 +49,16 @@ module.exports = {
         libraryTarget: 'var'
     },
     module: {
-        //noParse: /eslint\/build\/eslint.js/, // disables warnings
         loaders: [{
             test: /.js?$/,
-            loader: 'babel',
+            loaders: [
+                'babel',
+                `string-replace?search=require(config.parser)&replace=require("espree")`
+            ],
             exclude: /node_modules/
+        }, {
+            test: /.json?$/,
+            loader: 'json'
         }]
     },
     devtool: 'source-map'

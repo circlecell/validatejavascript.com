@@ -8,7 +8,9 @@
     "install": "npm run browserify-eslint",
     "browserify-eslint": "shx rm -rf eslint && git clone https://github.com/eslint/eslint eslint && cd eslint && npm install && npm run browserify",
     "develop": "NODE_ENV=development webpack-dev-server --port 8014 --no-info",
-    "bundle": "NODE_ENV=production webpack --display-error-details"
+    "bundle": "NODE_ENV=production webpack --display-error-details",
+    "check-updates": "ncu",
+    "upgrade": "npm run check-updates -- --upgradeAll && npm install"
   },
   "repository": {
     "type": "git",
@@ -29,19 +31,25 @@
     "babel-core": "^6.14.0",
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.14.0",
-    "babel-preset-es2016": "^6.11.3",
-    "babel-preset-es2017": "^6.14.0",
+    "babel-preset-stage-2": "^6.13.0",
     "copy-webpack-plugin": "^3.0.1",
-    "eslint": "^3.5.0",
+    "eslint": "^3.6.1",
     "html-webpack-plugin": "^2.22.0",
     "json-loader": "^0.5.4",
     "minimist": "^1.2.0",
+    "npm-check-updates": "^2.8.0",
     "open-browser-webpack-plugin": "0.0.2",
+    "shelljs": "^0.7.4",
     "shx": "^0.1.4",
+    "string-replace-loader": "^1.0.5",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.15.1"
+    "webpack-dev-server": "^1.16.1"
   },
   "dependencies": {
-    "babel-polyfill": "^6.13.0"
+    "babel-polyfill": "^6.13.0",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.2",
+    "eslint-plugin-react": "^6.3.0"
   }
 }
