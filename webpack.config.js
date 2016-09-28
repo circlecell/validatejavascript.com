@@ -37,7 +37,14 @@ entry.app.push(
     './src/index'
 );
 
-plugins.push(new CopyWebpackPlugin([]));
+plugins.push(
+    new CopyWebpackPlugin([]),
+    new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        }
+    })
+);
 
 module.exports = {
     entry,
@@ -51,11 +58,14 @@ module.exports = {
     module: {
         loaders: [{
             test: /.js?$/,
-            loaders: [
-                'babel',
-                `string-replace?search=require(config.parser)&replace=require("espree")`
-            ],
+            loader: 'babel',
             exclude: /node_modules/
+        }, {
+            test: /.js?$/,
+            loaders: [
+                `string-replace?search=require(config.parser)&replace=require("../../src/parser")`,
+                `string-replace?search=require('comment-parser')&replace=require("comment-parser/parser")`
+            ]
         }, {
             test: /.json?$/,
             loader: 'json'

@@ -34,6 +34,7 @@
     "babel-preset-stage-2": "^6.13.0",
     "copy-webpack-plugin": "^3.0.1",
     "eslint": "^3.6.1",
+    "eslint-config-canonical": "^1.8.8",
     "html-webpack-plugin": "^2.22.0",
     "json-loader": "^0.5.4",
     "minimist": "^1.2.0",
@@ -46,9 +47,12 @@
     "webpack-dev-server": "^1.16.1"
   },
   "dependencies": {
+    "babel-eslint": "^7.0.0",
     "babel-polyfill": "^6.13.0",
     "eslint-config-airbnb": "^12.0.0",
+    "eslint-plugin-babel": "^3.3.0",
     "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsdoc": "^2.3.1",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.3.0"
   }

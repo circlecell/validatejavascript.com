@@ -1,24 +1,20 @@
-/*function getConfig(moduleName) {
-    const module = require(moduleName);
-
-
-}
-
-
-console.log(getConfig('eslint-config-airbnb'));*/
-
 const Config = require('eslint/lib/config');
 
-const config = new Config({
-    configFile: require.resolve('eslint-config-airbnb'),
-    useEslintrc: false
-});
+function bundleConfig(moduleName) {
+    const { useSpecificConfig: config } = new Config({
+        configFile: require.resolve(moduleName),
+        useEslintrc: false
+    });
 
-const fs = require('fs');
-//console.log(JSON.stringify(config.rules));
-for(let key in config.useSpecificConfig.rules) {
-    if(key.indexOf('import/') === 0) {
-        delete config.useSpecificConfig.rules[key];
+    const fs = require('fs');
+    for(let key in config.rules) {
+        if(key.indexOf('import/') === 0) {
+            delete config.rules[key];
+        }
     }
+
+    fs.writeFileSync(`configs/${moduleName}.json`, JSON.stringify(config, null, '\t'));
 }
-fs.writeFileSync('bundled-config.json', JSON.stringify(config.useSpecificConfig));
+
+bundleConfig('eslint-config-airbnb');
+bundleConfig('eslint-config-canonical');

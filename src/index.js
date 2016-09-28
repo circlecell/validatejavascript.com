@@ -1,24 +1,32 @@
 import eslint from '../eslint/webpack/eslint';
-const reactRules = require('eslint-plugin-react').rules;
-const jsxRules = require('eslint-plugin-jsx-a11y').rules;
-const xxx = {};
-console.log(eslint);
+const plugins = {
+    react: require('eslint-plugin-react'),
+    'jsx-a11y': require('eslint-plugin-jsx-a11y'),
+    babel: require('eslint-plugin-babel'),
+    //lodash: require('eslint-plugin-lodash'),
+    flowtype: require('eslint-plugin-flowtype'),
+    jsdoc: require('eslint-plugin-jsdoc')
+}
 
-for(const [key, value] of Object.entries(reactRules)) {
-    xxx['react/' + key] = value;
+const stdRules = require('../eslint/webpack/load-rules')();
+const foreignRules = {};
+
+for(const [pluginName, plugin] of Object.entries(plugins)) {
+    const { rules } = plugin;
+    for(const [ruleName, rule] of Object.entries(rules)) {
+        foreignRules[`${pluginName}/${ruleName}`] = rule;
+    }
 }
 
 
-for(const [key, value] of Object.entries(jsxRules)) {
-    xxx['jsx-a11y/' + key] = value;
-}
 
+console.log(foreignRules);
+eslint.defineRules(foreignRules)
 
-console.log(xxx);
-eslint.defineRules(xxx)
-
-var messages = eslint.verify("import x from 'y'; var foo = <Tablo />", {
-    ...require('../bundled-config.json'),
+var messages = eslint.verify(`class X {
+    @eblinskyu foo = 5;
+}`, {
+    ...require('../configs/eslint-config-canonical.json'),
     plugins: []
 }, { filename: "foo.js" });
 
