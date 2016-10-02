@@ -1,4 +1,3 @@
-//module.exports = require('espree');
 
 var babylonToEspree = require("babel-eslint/babylon-to-espree");
 var pick            = require("lodash.pickby");

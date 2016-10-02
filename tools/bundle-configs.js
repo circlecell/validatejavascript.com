@@ -13,8 +13,15 @@ function bundleConfig(moduleName) {
         }
     }
 
+    delete config.extends;
+    delete config.globals;
+    delete config.env;
+    delete config.plugins;
+
     fs.writeFileSync(`configs/${moduleName}.json`, JSON.stringify(config, null, '\t'));
 }
 
 bundleConfig('eslint-config-airbnb');
-bundleConfig('eslint-config-canonical');
+bundleConfig('eslint-config-eslint');
+bundleConfig('eslint-config-google');
+bundleConfig('eslint-config-standard');
