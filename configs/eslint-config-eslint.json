@@ -1,6 +1,4 @@
 {
-	"globals": {},
-	"env": {},
 	"rules": {
 		"no-alert": 2,
 		"no-array-constructor": 2,
@@ -337,6 +335,5 @@
 	},
 	"parserOptions": {},
 	"parser": null,
-	"ecmaFeatures": {},
-	"extends": "eslint:recommended"
+	"ecmaFeatures": {}
 }

@@ -1,9 +1,4 @@
 {
-	"globals": {},
-	"env": {
-		"node": true,
-		"es6": true
-	},
 	"rules": {
 		"accessor-pairs": "off",
 		"array-callback-return": "error",
@@ -1012,11 +1007,6 @@
 			"jsx": true
 		}
 	},
-	"plugins": [
-		"import",
-		"react",
-		"jsx-a11y"
-	],
 	"settings": {
 		"import/resolver": {
 			"node": {
@@ -1041,15 +1031,6 @@
 			"version": "0.14"
 		}
 	},
-	"extends": [
-		"/home/finom/Dropbox/sync/todd/eslint.io/node_modules/eslint-config-airbnb-base/index.js",
-		"/home/finom/Dropbox/sync/todd/eslint.io/node_modules/eslint-config-airbnb-base/rules/strict.js",
-		"/home/finom/Dropbox/sync/todd/eslint.io/node_modules/eslint-config-airbnb/rules/react.js",
-		"/home/finom/Dropbox/sync/todd/eslint.io/node_modules/eslint-config-airbnb/rules/react-a11y.js",
-		"/home/finom/Dropbox/sync/todd/eslint.io/node_modules/eslint-config-airbnb-base/rules/variables.js",
-		"/home/finom/Dropbox/sync/todd/eslint.io/node_modules/eslint-config-airbnb-base/rules/es6.js",
-		"/home/finom/Dropbox/sync/todd/eslint.io/node_modules/eslint-config-airbnb-base/rules/imports.js"
-	],
 	"ecmaFeatures": {
 		"jsx": true
 	}

@@ -8,6 +8,7 @@ function fileType(extension) {
         return filename.substring(filename.lastIndexOf(".") + 1) === extension;
     };
 }
+
 function generateRulesIndex(basedir) {
     let output = "module.exports = function() {\n";
 
@@ -23,13 +24,11 @@ function generateRulesIndex(basedir) {
     output.to(basedir + "load-rules.js");
 }
 
-function browserify() {
-
+function webpackify() {
     // 1. create WEBPACK_DIR and build directory
     if (!test("-d", WEBPACK_DIR)) {
         mkdir(WEBPACK_DIR);
     }
-
 
     // 2. copy files into WEBPACK_DIR directory
     cp("-r", ESLINT_DIR + "lib/*", WEBPACK_DIR);
@@ -41,4 +40,4 @@ function browserify() {
     generateRulesIndex(WEBPACK_DIR);
 };
 
-browserify();
+webpackify();

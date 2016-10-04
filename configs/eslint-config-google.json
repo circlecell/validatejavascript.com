@@ -1,11 +1,4 @@
 {
-	"globals": {
-		"goog": true
-	},
-	"env": {
-		"node": true,
-		"es6": true
-	},
 	"rules": {
 		"comma-dangle": [
 			2,
@@ -355,6 +348,5 @@
 			"jsx": true,
 			"experimentalObjectRestSpread": true
 		}
-	},
-	"extends": "xo"
+	}
 }
