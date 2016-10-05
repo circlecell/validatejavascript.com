@@ -8,7 +8,7 @@ export default class RulesGroup extends MatreshkaArray {
         <div class="rules-list"></div>
     </fieldset>`;
     itemRenderer = `<label title="{{ description }}">
-        {{ ruleName }}: <code contenteditable class="value-json">{{ valueJSON }}</code>
+        {{ ruleName }}: <code contenteditable class="value-json"></code>
     </label>`
     constructor({ title, rulesList }) {
         super()

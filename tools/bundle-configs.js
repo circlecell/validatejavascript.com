@@ -1,4 +1,5 @@
 const Config = require('eslint/lib/config');
+const rimraf = require('rimraf');
 
 function bundleConfig(moduleName) {
     const { useSpecificConfig: config } = new Config({
@@ -18,8 +19,10 @@ function bundleConfig(moduleName) {
     delete config.env;
     delete config.plugins;
 
-    fs.writeFileSync(`configs/${moduleName}.json`, JSON.stringify(config, null, '\t'));
+    fs.writeFileSync(`src/lint/configs/${moduleName}.json`, JSON.stringify(config, null, '\t'));
 }
+
+rimraf.sync('src/lint/configs/*.json');
 
 bundleConfig('eslint-config-airbnb');
 bundleConfig('eslint-config-eslint');

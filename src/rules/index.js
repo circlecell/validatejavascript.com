@@ -23,12 +23,12 @@ export default class Rules extends MatreshkaArray {
             }))
         });
 
-        for(const [pluginName, { rules }] of Object.entries(plugins)) {
+        for(const { name, plugin: { rules } } of plugins) {
             this.push({
-                title: pluginName,
-                prefix: pluginName,
+                title: name,
+                prefix: name,
                 rulesList: Object.keys(rules).map(ruleName => {
-                    const fullRuleName = `${pluginName}/${ruleName}`;
+                    const fullRuleName = `${name}/${ruleName}`;
 
                     allRules.push(fullRuleName);
 
@@ -40,7 +40,7 @@ export default class Rules extends MatreshkaArray {
         this.set({ allRules });
     }
 
-    update(rules) {
+    update(rules) {//console.log(yomanarod);
         for(const group of this) {
             for(const rule of group) {
                 rule.value = rules[rule.fullRuleName] || 'off';

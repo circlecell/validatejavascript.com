@@ -8,7 +8,7 @@ const { port } = require('minimist')(process.argv.slice(2));
 const webpack = require('webpack');
 
 const { NODE_ENV } = process.env;
-let devtool = 'cheap-module-source-map';
+let devtool = 'source-map';
 const entry = {
     app: []
 };
@@ -27,11 +27,21 @@ const plugins = [
 
 if (NODE_ENV === 'development') {
     entry.app.push(`webpack-dev-server/client?http://localhost:${port}`);
-    plugins.push(new OpenBrowserPlugin({
-        url: `http://localhost:${port}`,
-        ignoreErrors: true
-    }));
-    devtool = 'cheap-module-eval-source-map';
+    plugins.push(
+        new OpenBrowserPlugin({
+            url: `http://localhost:${port}`,
+            ignoreErrors: true
+        })
+    );
+    devtool = 'cheap-source-map';
+} else {
+    plugins.push(
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
+    );
 }
 
 entry.app.push(
@@ -40,12 +50,7 @@ entry.app.push(
 );
 
 plugins.push(
-    new CopyWebpackPlugin([]),
-    new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        }
-    })
+    new CopyWebpackPlugin([])
 );
 
 module.exports = {
