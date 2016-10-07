@@ -59,7 +59,7 @@ module.exports = {
     devtool,
     output: {
         path: 'bundle/',
-        filename: 'js/app.js',
+        filename: 'js/[name].js',
         library: 'app',
         libraryTarget: 'var',
         chunkFilename: 'js/[name].chunk.js'

@@ -63,7 +63,6 @@
     "eslint-plugin-promise": "^2.0.1",
     "eslint-plugin-react": "^6.3.0",
     "eslint-plugin-standard": "^2.0.1",
-    "makeelement": "0.0.1",
     "matreshka": "^2.0.0-alpha.13"
   }
 }

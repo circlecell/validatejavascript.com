@@ -1,5 +1,4 @@
 import MatreshkaObject from 'matreshka/object';
-import makeElement from 'makeelement';
 import lint from './lint';
 import { setParser } from './lint/parser';
 import Environments from './environments';
@@ -22,16 +21,22 @@ module.exports = new class Application extends MatreshkaObject {
                 binder: {
                     initialize() {
                         for(const configName of configs.map(item => item.name)) {
-                            this.appendChild(makeElement('option', {
-                                innerHTML: configName,
-                                value: configName
-                            }))
+                            this.appendChild(
+                                Object.assign(
+                                    document.createElement('option'),
+                                    {
+                                        innerHTML: configName,
+                                        value: configName
+                                    }
+                                )
+                            );
                         }
                     }
                 }
             },
             code: ':sandbox textarea',
-            parserName: ':sandbox .parser-name'
+            parserName: ':sandbox .parser-name',
+            useRecommended: ':sandbox .use-recommended'
         })
         .instantiate({
             env: Environments,
@@ -40,8 +45,8 @@ module.exports = new class Application extends MatreshkaObject {
         .instantiate({
             results: Results
         })
-        .on({
-            'change:configName': () => {
+        .onDebounce({
+            'change:configName change:useRecommended': () => {
                 const { configName } = this;
                 if(configName) {
                     const config = configs.find(config => config.name === configName);
@@ -68,14 +73,3 @@ module.exports = new class Application extends MatreshkaObject {
         });
     }
 }
-
-/*
-setParser('babel').then(() => {
-    var messages = lint(`class X {
-        @eblinskyu foo = 5;
-    }`, {
-        ...require('../configs/eslint-config-standard.json')
-    });
-
-    console.log(messages);
-});*/

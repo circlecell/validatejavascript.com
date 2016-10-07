@@ -1,49 +1,31 @@
 import MatreshkaArray from 'matreshka/array';
 import RulesGroup from './rules-group';
 import plugins from '../lint/plugins';
-import internalRules from '../lint/internal-rules';
 
 export default class Rules extends MatreshkaArray {
-
     Model = RulesGroup;
     constructor(data, parent) {
-        const allRules = Object.keys(internalRules);
-
         super()
             .bindNode({
                 sandbox: parent.select('.rules')
-            });
+            })
+            .calc('useRecommended', {
+                object: parent,
+                key: 'useRecommended'
+            }, null, { debounceCalc: false });
 
-        this.push({
-            title: 'Internal',
-            prefix: null,
-            rulesList: Object.keys(internalRules).map(ruleName => ({
-                ruleName,
-                fullRuleName: ruleName
-            }))
-        });
-
-        for(const { name, plugin: { rules } } of plugins) {
-            this.push({
-                title: name,
-                prefix: name,
-                rulesList: Object.keys(rules).map(ruleName => {
-                    const fullRuleName = `${name}/${ruleName}`;
-
-                    allRules.push(fullRuleName);
-
-                    return { ruleName, fullRuleName };
-                })
-            });
-        }
-
-        this.set({ allRules });
+        this.recreate(plugins);
     }
 
-    update(rules) {//console.log(yomanarod);
+    update(rules) {
         for(const group of this) {
             for(const rule of group) {
-                rule.value = rules[rule.fullRuleName] || 'off';
+                const fullRuleName = group.getFullRuleName(rule.ruleName, group.name);
+                const recommended = this.useRecommended && group.plugin.configs
+                    && group.plugin.configs.recommended
+                    && group.plugin.configs.recommended.rules || {};
+
+                rule.value = rules[fullRuleName] || recommended[fullRuleName] || 'off';
             }
         }
     }
@@ -51,8 +33,8 @@ export default class Rules extends MatreshkaArray {
     toJSON() {
         const result = {};
         for(const group of this) {
-            for(const { fullRuleName, value } of group) {
-                result[fullRuleName] = value;
+            for(const { ruleName, value } of group) {
+                result[group.getFullRuleName(ruleName, group.name)] = value;
             }
         }
 
