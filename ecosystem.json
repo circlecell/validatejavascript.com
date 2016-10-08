@@ -1,0 +1,13 @@
+{
+  "deploy" : {
+    "production" : {
+      "user" : "deployer",
+      "host" : "192.241.157.86",
+      "ref"  : "origin/master",
+      "repo" : "git@github.com:circlecell/eslint.io.git",
+      "path" : "/var/web/eslint.io",
+      "ssh_options": ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
+      "post-deploy" : "rm -rf node_modules; npm install"
+    },
+  }
+}
