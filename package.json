@@ -15,8 +15,7 @@
     "check-updates": "ncu",
     "upgrade": "npm run check-updates -- --upgradeAll && npm install",
     "semantic-release": "semantic-release pre && npm run deploy && semantic-release post",
-    "deploy": "pm2 deploy ecosystem.json production",
-    "travis-deploy": "if ([ \"$TRAVIS_BRANCH\" == \"master\" ] && [ \"$TRAVIS_PULL_REQUEST\" == \"false\" ]); then eval 'npm install -g pm2 && npm run semantic-release'; fi"
+    "deploy": "pm2 deploy ecosystem.json production"
   },
   "config": {
     "validate-commit-msg": {
@@ -68,7 +67,6 @@
     "html-webpack-plugin": "^2.22.0",
     "jasmine": "^2.5.2",
     "json-loader": "^0.5.4",
-    "last-release-git": "0.0.1",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "npm-check-updates": "^2.8.4",
