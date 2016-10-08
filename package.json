@@ -34,7 +34,7 @@
     }
   },
   "release": {
-    "getLastRelease": "./tools/last-release.js"
+    "getLastRelease": "last-release-git"
   },
   "repository": {
     "type": "git",
@@ -67,6 +67,7 @@
     "html-webpack-plugin": "^2.22.0",
     "jasmine": "^2.5.2",
     "json-loader": "^0.5.4",
+    "last-release-git": "0.0.1",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
     "npm-check-updates": "^2.8.4",
