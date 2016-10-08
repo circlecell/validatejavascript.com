@@ -58,7 +58,7 @@ module.exports = {
     plugins,
     devtool,
     output: {
-        path: 'bundle/',
+        path: 'dist/',
         filename: 'js/[name].js',
         library: 'app',
         libraryTarget: 'var',

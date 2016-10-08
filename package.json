@@ -11,7 +11,7 @@
     "webpackify-eslint": "node tools/webpackify-eslint",
     "develop": "npm run bundle-configs && NODE_ENV=development webpack-dev-server --port 8014 --no-info",
     "bundle": "npm run bundle-configs && NODE_ENV=production webpack --display-error-details",
-    "bundle-configs": "mkdirp configs && node tools/bundle-configs",
+    "bundle-configs": "node tools/bundle-configs",
     "check-updates": "ncu",
     "upgrade": "npm run check-updates -- --upgradeAll && npm install",
     "semantic-release": "semantic-release pre && npm run deploy && semantic-release post",
