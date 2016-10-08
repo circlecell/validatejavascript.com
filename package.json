@@ -17,6 +17,22 @@
     "semantic-release": "semantic-release pre && npm run deploy && semantic-release post",
     "deploy": "pm2 deploy ecosystem.json production"
   },
+  "config": {
+    "validate-commit-msg": {
+      "types": [
+        "feat",
+        "fix",
+        "refactor",
+        "perf",
+        "test",
+        "chore",
+        "revert"
+      ]
+    },
+    "ghooks": {
+      "commit-msg": "validate-commit-msg"
+    }
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/circlecell/eslint.io.git"
@@ -44,6 +60,7 @@
     "eslint-config-eslint": "^3.0.0",
     "eslint-config-google": "^0.6.0",
     "eslint-config-standard": "^6.2.0",
+    "ghooks": "^1.3.2",
     "html-webpack-plugin": "^2.22.0",
     "jasmine": "^2.5.2",
     "json-loader": "^0.5.4",
@@ -52,12 +69,13 @@
     "npm-check-updates": "^2.8.0",
     "open-browser-webpack-plugin": "0.0.2",
     "rimraf": "^2.5.4",
+    "semantic-release": "^4.3.5",
     "shelljs": "^0.7.4",
     "shx": "^0.1.4",
     "string-replace-loader": "^1.0.5",
+    "validate-commit-msg": "^2.8.2",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1",
-    "semantic-release": "^4.3.5"
+    "webpack-dev-server": "^1.16.1"
   },
   "dependencies": {
     "babel-eslint": "^7.0.0",
