@@ -4,7 +4,7 @@ import path from 'path';
 
 describe('Common', () => {
     it('does not warn about nonexisting rules', () => {
-        const configsFolder = path.resolve(__dirname, '../../configs');
+        const configsFolder = path.resolve(__dirname, '../../src/lint/configs');
         for(const configPath of fs.readdirSync(configsFolder)) {
             const config = require(path.resolve(configsFolder, configPath));
 

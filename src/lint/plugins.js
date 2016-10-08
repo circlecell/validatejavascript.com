@@ -2,7 +2,7 @@ import eslint from '../../eslint/webpack/eslint';
 
 const getFullRuleName = (ruleId, pluginName) => `${pluginName}/${ruleId}`;
 const isExternal = true;
-const externalRules = {};
+export const externalRules = {};
 
 const plugins = [{
     name: 'internal',
@@ -49,7 +49,5 @@ for(const { isExternal, name, plugin: { rules } } of plugins) {
         }
     }
 }
-
-eslint.defineRules(externalRules);
 
 export default plugins;

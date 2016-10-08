@@ -1,12 +1,11 @@
-const context = require.context('./', false, /.*\.json$/);
+const names = ['airbnb', 'eslint', 'google', 'standard'];
 const configs = [];
 
-context.keys().forEach(path => {
-    const name = path.replace(/\.\/eslint-config-(\S+)\.json/, '$1');
+for(const name of names) {
     configs.push({
         name,
-        config: context(path)
+        config: require(`./eslint-config-${name}.json`)
     });
-});
+}
 
 export default configs;

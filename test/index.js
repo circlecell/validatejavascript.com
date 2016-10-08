@@ -16,9 +16,10 @@ jasmine.loadConfig({
     spec_files: [
         '**/*_spec.js'
     ],
-    "helpers": [
+    helpers: [
         "../node_modules/babel-register/lib/node.js"
-    ]
+    ],
+    stopSpecOnExpectationFailure: true
 });
 
 //jasmine.addReporter(new SpecReporter());
