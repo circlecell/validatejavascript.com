@@ -12,8 +12,8 @@ export default class RulesGroup extends MatreshkaArray {
     </label>`
     constructor(plugin) {
         super()
-            .set(plugin)
-            //.recreate();
+            .set(plugin);
+
         const { plugin: { rules } } = plugin;
         for(const ruleName of Object.keys(rules)) {
             //console.log(rules);
@@ -32,7 +32,7 @@ export default class RulesGroup extends MatreshkaArray {
 
     onItemRender(item) {
         chain(item)
-            .calc('valueJSON', 'value', JSON.stringify)
+            .calc('valueJSON', 'value', value => JSON.stringify(value, null, '\t'))
             .calc('value', 'valueJSON', value => value ? JSON.parse(value) : 0)
             .bindNode('valueJSON', ':sandbox .value-json', html());
     }
