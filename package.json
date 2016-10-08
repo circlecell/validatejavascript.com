@@ -33,6 +33,9 @@
       "commit-msg": "validate-commit-msg"
     }
   },
+  "release": {
+    "getLastRelease": "./tools/last-release.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/circlecell/eslint.io.git"
@@ -49,12 +52,12 @@
   },
   "homepage": "https://github.com/circlecell/eslint.io#readme",
   "devDependencies": {
-    "babel-core": "^6.14.0",
+    "babel-core": "^6.17.0",
     "babel-loader": "^6.2.5",
-    "babel-preset-es2015": "^6.14.0",
-    "babel-preset-stage-2": "^6.13.0",
+    "babel-preset-es2015": "^6.16.0",
+    "babel-preset-stage-2": "^6.17.0",
     "copy-webpack-plugin": "^3.0.1",
-    "eslint": "^3.6.1",
+    "eslint": "^3.7.1",
     "eslint-config-airbnb": "^12.0.0",
     "eslint-config-canonical": "^1.8.8",
     "eslint-config-eslint": "^3.0.0",
@@ -66,22 +69,23 @@
     "json-loader": "^0.5.4",
     "minimist": "^1.2.0",
     "mkdirp": "^0.5.1",
-    "npm-check-updates": "^2.8.0",
+    "npm-check-updates": "^2.8.4",
     "open-browser-webpack-plugin": "0.0.2",
     "rimraf": "^2.5.4",
     "semantic-release": "^4.3.5",
+    "semver": "^5.3.0",
     "shelljs": "^0.7.4",
     "shx": "^0.1.4",
     "string-replace-loader": "^1.0.5",
     "validate-commit-msg": "^2.8.2",
     "webpack": "^1.13.2",
-    "webpack-dev-server": "^1.16.1"
+    "webpack-dev-server": "^1.16.2"
   },
   "dependencies": {
     "babel-eslint": "^7.0.0",
-    "babel-polyfill": "^6.13.0",
-    "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-promise": "^2.0.1",
+    "babel-polyfill": "^6.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-promise": "^3.0.0",
     "eslint-plugin-react": "^6.3.0",
     "eslint-plugin-standard": "^2.0.1",
     "matreshka": "^2.0.0-alpha.13"
