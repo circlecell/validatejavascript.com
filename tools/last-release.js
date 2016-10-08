@@ -25,7 +25,7 @@ module.exports = (config, pluginConfig, callback) => {
     }
 
     if(!latestVersion) {
-        throw Error('There is no valid git tag. If you just started using last-release-git-tag you need to create the first valid git tag manually. Run "git tag v0.0.0".');
+        throw Error('There is no valid git tag. If you just started using last-release-git-tag you need to create the first valid git tag manually. Run "git tag v0.0.0" and then push your tags via "git push --tags".');
     }
 
     callback(null, {
