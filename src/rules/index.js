@@ -33,8 +33,8 @@ export default class Rules extends MatreshkaArray {
     toJSON() {
         const result = {};
         for(const group of this) {
-            for(const { ruleName, value } of group) {
-                result[group.getFullRuleName(ruleName, group.name)] = value;
+            for(const { ruleName, value, isOn } of group) {
+                result[group.getFullRuleName(ruleName, group.name)] = isOn ? value : 0;
             }
         }
 

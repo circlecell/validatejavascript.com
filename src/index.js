@@ -69,7 +69,8 @@ module.exports = new class Application extends MatreshkaObject {
 
                 console.log(results);
             },
-            'change:parserName': () => setParser(this.parserName)
+            'change:parserName': () => setParser(this.parserName),
+            'rules@modify': evt => console.log('tablo')
         });
     }
 }

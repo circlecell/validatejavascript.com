@@ -1,25 +1,23 @@
 import MatreshkaArray from 'matreshka/array';
-import chain from 'matreshka/chain';
-import html from 'matreshka/binders/html';
+import Rule from './rule';
 
 export default class RulesGroup extends MatreshkaArray {
+    Model = Rule;
+
     renderer = `<fieldset>
         <legend>{{ name }}</legend>
         <div class="rules-list"></div>
     </fieldset>`;
-    itemRenderer = `<label>
-        {{ ruleName }}: <code contenteditable class="value-json"></code>
-    </label>`
+
     constructor(plugin) {
         super()
             .set(plugin);
 
         const { plugin: { rules } } = plugin;
         for(const ruleName of Object.keys(rules)) {
-            //console.log(rules);
             this.push({
                 ruleName,
-                value: 0
+                value: 'off'
             });
         }
     }
@@ -28,12 +26,5 @@ export default class RulesGroup extends MatreshkaArray {
         this
             .bindNode('container', ':sandbox .rules-list')
             .rerender();
-    }
-
-    onItemRender(item) {
-        chain(item)
-            .calc('valueJSON', 'value', value => JSON.stringify(value, null, '\t'))
-            .calc('value', 'valueJSON', value => value ? JSON.parse(value) : 0)
-            .bindNode('valueJSON', ':sandbox .value-json', html());
     }
 }
