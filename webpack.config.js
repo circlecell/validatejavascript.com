@@ -3,7 +3,6 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const fs = require('fs');
 const path = require('path');
-var StringReplacePlugin = require("string-replace-webpack-plugin");
 const { port } = require('minimist')(process.argv.slice(2));
 const webpack = require('webpack');
 
