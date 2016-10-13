@@ -40,6 +40,7 @@ export default class Rule extends MatreshkaObject {
                     source: 'dynamicValue',
                     handler: value => JSON.stringify(value, null, '\t')
                 }
-            });
+            })
+            .on('click::isOn', () => this.trigger('rulechange'));
     }
 }

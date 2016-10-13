@@ -65,12 +65,12 @@ module.exports = new class Application extends MatreshkaObject {
                 evt.preventDefault();
                 const results = lint(this.code, this.toJSON());
 
-                this.set({ results })
-
-                console.log(results);
+                this.set({ results });
             },
             'change:parserName': () => setParser(this.parserName),
-            'rules@modify': evt => console.log('tablo')
+            'rules@rulechange': () => {
+                this.set('configName', '', { silent: true });
+            }
         });
     }
 }

@@ -12,9 +12,13 @@ export default class Rules extends MatreshkaArray {
             .calc('useRecommended', {
                 object: parent,
                 key: 'useRecommended'
-            }, null, { debounceCalc: false });
-
-        this.recreate(plugins);
+            }, null, { debounceCalc: false })
+            .on({
+                '*.*@rulechange': () => {
+                    this.trigger('rulechange')
+                }
+            })
+            .recreate(plugins);
     }
 
     update(rules) {
