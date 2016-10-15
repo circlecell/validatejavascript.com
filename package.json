@@ -15,7 +15,8 @@
     "check-updates": "ncu",
     "upgrade": "npm run check-updates -- --upgradeAll && npm install",
     "semantic-release": "semantic-release pre && npm run deploy && semantic-release post",
-    "deploy": "pm2 deploy ecosystem.json production"
+    "deploy": "pm2 deploy ecosystem.json production",
+    "travis-deploy": "if ([ \"$TRAVIS_BRANCH\" == \"master\" ] && [ \"$TRAVIS_PULL_REQUEST\" == \"false\" ]); then eval 'npm install -g pm2 && npm run semantic-release'; fi"
   },
   "config": {
     "validate-commit-msg": {
