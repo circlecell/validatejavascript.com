@@ -16,7 +16,7 @@
     "upgrade": "npm run check-updates -- --upgradeAll && npm install",
     "semantic-release": "semantic-release pre && npm run deploy && semantic-release post",
     "deploy": "pm2 deploy ecosystem.json production",
-    "travis-deploy": "if-env TRAVIS_BRANCH=master TRAVIS_PULL_REQUEST=false && npm install -g pm2 && npm run semantic-release || echo 'Deploy is not run'"
+    "travis-deploy": "if-env TRAVIS_BRANCH=master TRAVIS_PULL_REQUEST=false && git status && npm install -g pm2 && npm run semantic-release || echo 'Deploy is not run'"
   },
   "config": {
     "validate-commit-msg": {
