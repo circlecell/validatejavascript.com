@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <title></title>
         <style>
-            textarea {
+            /*textarea {
                 width: 100%;
                 height: 400px;
             }
@@ -20,44 +20,68 @@
 
             code {
                 white-space: pre;
-            }
+            }*/
         </style>
     </head>
     <body>
-        <form>
-            <textarea class="code"></textarea>
-            <button type="submit">Submit</button>
-            <fieldset>
-                <legend>Results</legend>
-                <div class="results"></div>
-            </fieldset>
-            <div class="settings">
-                <fieldset>
-                    <legend>Settings</legend>
-                    <label> Config:
-                        <select class="config-name">
-                            <option value="">Custom</option>
-                        </select>
-                    </label>
-                    <label> Parser:
-                        <select class="parser-name">
-                            <option value="espree">Espree</option>
-                            <option value="babel">Babel</option>
-                        </select>
-                    </label>
-                    <label>
-                        <input type="checkbox" class="use-recommended">
-                        Use recommended values if available
-                    </label>
-                </fieldset>
-                <fieldset>
-                    <legend>Environments</legend>
-                    <div class="environments"></div>
-                </fieldset>
-                <fieldset>
-                    <legend>Rules</legend>
-                    <div class="rules"></div>
-                </fieldset>
+        <form class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <textarea class="code"></textarea>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <fieldset class="form-group">
+                        <legend>Results</legend>
+                        <div class="results"></div>
+                    </fieldset>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <fieldset>
+                        <legend>Settings</legend>
+                        <div class="form-group">
+                            <label>Config:</label>
+                            <select class="config-name form-control">
+                                <option value="">Custom</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label> Parser:</label>
+                            <select class="parser-name form-control">
+                                <option value="espree">Espree</option>
+                                <option value="babel">Babel</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" class="use-recommended">
+                                Use recommended values if available
+                            </label>
+                        </div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <fieldset>
+                        <legend>Environments</legend>
+                        <div class="environments"></div>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <fieldset>
+                        <legend>Rules</legend>
+                        <div class="rules"></div>
+                    </fieldset>
+                </div>
             </div>
         </form>
     </body>

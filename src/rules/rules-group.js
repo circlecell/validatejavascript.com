@@ -4,7 +4,7 @@ import Rule from './rule';
 export default class RulesGroup extends MatreshkaArray {
     Model = Rule;
 
-    renderer = `<fieldset>
+    renderer = `<fieldset class="row-fluid">
         <legend>{{ name }}</legend>
         <div class="rules-list"></div>
     </fieldset>`;

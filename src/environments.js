@@ -4,7 +4,7 @@ import environments from './lint/environments';
 export default class Environments extends MatreshkaArray {
 
     itemRenderer = `
-        <label title="{{description}}">
+        <label title="{{description}}" class="form-check-label">
             <input type="checkbox" checked="{{checked}}"> {{environment}}
         </label>
     `;

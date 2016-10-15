@@ -2,7 +2,7 @@ import MatreshkaArray from 'matreshka/array';
 import plugins from './lint/plugins';
 
 export default class Results extends MatreshkaArray {
-    itemRenderer = `<div>
+    itemRenderer = `<div class="alert alert-danger">
         {{ message }}
         ({{ ruleId }})
     </div>`;

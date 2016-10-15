@@ -1,2 +1,14 @@
 @import '~bootstrap/dist/css/bootstrap.css';
 @import '~codemirror/lib/codemirror.css';
+
+.CodeMirror {
+    border: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+button[type="submit"] {
+    margin-top: 1rem;
+}
+
+.results:empty::before {
+    content: 'No errors';
+}

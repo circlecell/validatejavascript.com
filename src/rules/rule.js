@@ -2,7 +2,7 @@ import MatreshkaObject from 'matreshka/object';
 //import prop from 'matreshka/binders/prop';
 
 export default class Rule extends MatreshkaObject {
-    renderer = `<label title="{{ dynamicValueJSON }}">
+    renderer = `<label title="{{ dynamicValueJSON }}" class="col-md-4">
         <input type="checkbox" checked="{{ isOn }}"> {{ ruleName }}
     </label>`;
     constructor(data) {
