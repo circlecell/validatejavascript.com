@@ -5,8 +5,7 @@ import Environments from './environments';
 import Rules from './rules';
 import Results from './results';
 import configs from './lint/configs';
-
-console.log(configs)
+import codeMirror from './binders/codemirror';
 
 module.exports = new class Application extends MatreshkaObject {
     constructor() {
@@ -20,13 +19,13 @@ module.exports = new class Application extends MatreshkaObject {
                 node: ':sandbox .config-name',
                 binder: {
                     initialize() {
-                        for(const configName of configs.map(item => item.name)) {
+                        for(const { name } of configs) {
                             this.appendChild(
                                 Object.assign(
                                     document.createElement('option'),
                                     {
-                                        innerHTML: configName,
-                                        value: configName
+                                        innerHTML: name,
+                                        value: name
                                     }
                                 )
                             );
@@ -34,7 +33,12 @@ module.exports = new class Application extends MatreshkaObject {
                     }
                 }
             },
-            code: ':sandbox textarea',
+            code: {
+                node: ':sandbox textarea',
+                binder: codeMirror({
+                    lineNumbers: true
+                })
+            },
             parserName: ':sandbox .parser-name',
             useRecommended: ':sandbox .use-recommended'
         })
@@ -61,7 +65,7 @@ module.exports = new class Application extends MatreshkaObject {
             }
         }, true)
         .on({
-            'submit::sandbox': evt => {
+            'submit::sandbox': evt => {console.log(this.code)
                 evt.preventDefault();
                 const results = lint(this.code, this.toJSON());
 

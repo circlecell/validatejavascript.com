@@ -25,9 +25,11 @@ export default class Rules extends MatreshkaArray {
         for(const group of this) {
             for(const rule of group) {
                 const fullRuleName = group.getFullRuleName(rule.ruleName, group.name);
-                const recommended = this.useRecommended && group.plugin.configs
+                const recommended = this.useRecommended
+                    && group.plugin.configs
                     && group.plugin.configs.recommended
-                    && group.plugin.configs.recommended.rules || {};
+                    && group.plugin.configs.recommended.rules
+                    || {};
 
                 rule.value = rules[fullRuleName] || recommended[fullRuleName] || 'off';
             }
