@@ -92,6 +92,7 @@
   "dependencies": {
     "babel-eslint": "^7.0.0",
     "babel-polyfill": "^6.16.0",
+    "bootstrap": "^4.0.0-alpha.4",
     "codemirror": "^5.19.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-promise": "^3.0.0",

@@ -65,7 +65,7 @@ module.exports = new class Application extends MatreshkaObject {
             }
         }, true)
         .on({
-            'submit::sandbox': evt => {console.log(this.code)
+            'submit::sandbox': evt => {
                 evt.preventDefault();
                 const results = lint(this.code, this.toJSON());
 
