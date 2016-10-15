@@ -1,15 +1,16 @@
 import MatreshkaArray from 'matreshka/array';
-import plugins from './lint/plugins';
+import ResultsItem from './item';
 
 export default class Results extends MatreshkaArray {
     itemRenderer = `<div class="alert alert-danger">
         {{ message }}
-        ({{ ruleId }})
+        (<a href="{{ href }}" target="_blank">{{ ruleId }}</a>)
     </div>`;
+    Model = ResultsItem;
     constructor(data, parent) {
         super()
             .bindNode('sandbox', parent.select('.results'))
-            .calc('displayMessage', ['message', 'ruleId'], (message, ruleId) => {
+            /*.calc('displayMessage', ['message', 'ruleId'], (message, ruleId) => {
                 if(ruleId) {
                     const pluginName = ruleId.includes('/') ? ruleId.split('/')[0] : null;
                     const plugin = pluginName ? plugins.find(item => item.name === pluginName) : null;
@@ -28,7 +29,7 @@ export default class Results extends MatreshkaArray {
                 }
 
                 return message;
-            });
+            });*/
     }
 
 }

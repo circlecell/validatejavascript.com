@@ -196,6 +196,7 @@
 		"eqeqeq": 2,
 		"func-call-spacing": "off",
 		"func-names": "off",
+		"func-name-matching": "off",
 		"func-style": [
 			2,
 			"declaration"
