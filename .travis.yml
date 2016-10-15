@@ -17,9 +17,6 @@ before_deploy:
 deploy:
   provider: script
   skip_cleanup: true
-  script: if ([ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ])
-      then
-        eval 'npm install -g pm2 && npm run semantic-release';
-      fi
+  script: if ([ "$TRAVIS_BRANCH" == "master" ] && [ "$TRAVIS_PULL_REQUEST" == "false" ]); then eval 'npm install -g pm2 && npm run semantic-release'; fi
   on:
     branch: master
