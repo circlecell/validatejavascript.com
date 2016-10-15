@@ -4,7 +4,7 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const { isDevelopment, port } = require('./env');
+const { isDevelopment, isProduction, port } = require('./env');
 
 const plugins = [
     new HtmlWebpackPlugin({
@@ -31,11 +31,11 @@ if (isDevelopment) {
     );
 } else if(isProduction) {
     plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
+        /*new webpack.optimize.UglifyJsPlugin({
             compress: {
                 warnings: false
             }
-        })
+        })*/
     );
 }
 

@@ -10,7 +10,7 @@
     "clone-eslint": "git clone https://github.com/eslint/eslint.git eslint",
     "webpackify-eslint": "node tools/webpackify-eslint",
     "develop": "npm run bundle-configs && NODE_ENV=development webpack-dev-server --port 8014 --no-info --config webpack",
-    "bundle": "npm run bundle-configs && NODE_ENV=production webpack --display-error-details",
+    "bundle": "npm run bundle-configs && NODE_ENV=production webpack --config webpack --display-error-details",
     "bundle-configs": "node tools/bundle-configs",
     "check-updates": "ncu",
     "upgrade": "npm run check-updates -- --upgradeAll && npm install",
