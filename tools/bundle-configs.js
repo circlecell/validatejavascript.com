@@ -24,7 +24,6 @@ function bundleConfig(moduleName) {
 
 rimraf.sync('src/lint/configs/*.json');
 
-bundleConfig('eslint-config-airbnb');
-bundleConfig('eslint-config-eslint');
-bundleConfig('eslint-config-google');
-bundleConfig('eslint-config-standard');
+['airbnb', 'eslint', 'google', 'standard', 'xo']
+    .map(item => `eslint-config-${item}`)
+    .forEach(bundleConfig);

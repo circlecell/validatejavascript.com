@@ -1,4 +1,4 @@
-const names = ['airbnb', 'eslint', 'google', 'standard'];
+const names = ['airbnb', 'eslint', 'google', 'standard', 'xo'];
 const configs = [];
 
 for(const name of names) {
