@@ -14,7 +14,7 @@
     "bundle-configs": "node tools/bundle-configs",
     "check-updates": "ncu",
     "upgrade": "npm run check-updates -- --upgradeAll && npm install",
-    "semantic-release": "semantic-release pre && semantic-release post && npm run deploy",
+    "semantic-release": "semantic-release pre && semantic-release post && git status && ls . -a && npm run deploy",
     "deploy": "pm2 deploy ecosystem.json production",
     "travis-deploy": "if-env TRAVIS_BRANCH=master TRAVIS_PULL_REQUEST=false && npm install -g pm2 && npm run semantic-release || echo 'Deploy is not run'"
   },
