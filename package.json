@@ -1,5 +1,6 @@
 {
   "name": "eslint.io",
+  "version": "0.0.0-auto",
   "private": true,
   "description": "A browser version of ESLint",
   "main": "index.js",
