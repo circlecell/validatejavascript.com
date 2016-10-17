@@ -15,3 +15,29 @@ button[type="submit"] {
 .results:empty::before {
     content: 'No errors';
 }
+
+.code, .CodeMirror {
+    height: 350px;
+}
+
+.expandable-fieldset-content {
+    -padding: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .2s ease-out 0s;
+
+    &.expanded {
+        max-height: 1000px;
+    }
+}
+
+.expand-fieldset-content {
+    display: inline-block;
+    color: #0275d8;
+    border-bottom: 1px dashed currentColor;
+    cursor: pointer;
+    width: auto;
+    &:hover {
+        color: #014c8c;
+    }
+}

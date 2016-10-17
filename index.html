@@ -2,32 +2,15 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title></title>
-        <style>
-            /*textarea {
-                width: 100%;
-                height: 400px;
-            }
-
-            .rules-list label {
-                display: inline-block;
-                width: 33%;
-            }
-
-            .results:empty::before {
-                content: 'No errors';
-            }
-
-            code {
-                white-space: pre;
-            }*/
-        </style>
+        <title>ECMAScript Lint</title>
     </head>
     <body>
+
         <form class="container">
+            <h1>ECMAScript Lint</h1>
             <div class="row">
                 <div class="col-md-12">
-                    <textarea class="code"></textarea>
+                    <textarea class="code form-control"></textarea>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
@@ -44,25 +27,27 @@
             <div class="row">
                 <div class="col-md-12">
                     <fieldset>
-                        <legend>Settings</legend>
-                        <div class="form-group">
-                            <label>Config:</label>
-                            <select class="config-name form-control">
-                                <option value="">Custom</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label> Parser:</label>
-                            <select class="parser-name form-control">
-                                <option value="espree">Espree</option>
-                                <option value="babel">Babel</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>
-                                <input type="checkbox" class="use-recommended">
-                                Use recommended values if available
-                            </label>
+                        <legend class="expand-fieldset-content">Settings</legend>
+                        <div class="expandable-fieldset-content">
+                            <div class="form-group">
+                                <label>Config:</label>
+                                <select class="config-name form-control">
+                                    <option value="">Custom</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label> Parser:</label>
+                                <select class="parser-name form-control">
+                                    <option value="espree">Espree</option>
+                                    <option value="babel">Babel</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>
+                                    <input type="checkbox" class="use-recommended">
+                                    Use recommended values if available
+                                </label>
+                            </div>
                         </div>
                     </fieldset>
                 </div>
@@ -70,16 +55,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <fieldset>
-                        <legend>Environments</legend>
-                        <div class="environments"></div>
+                        <legend class="expand-fieldset-content">Environments</legend>
+                        <div class="environments expandable-fieldset-content"></div>
                     </fieldset>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-12">
                     <fieldset>
-                        <legend>Rules</legend>
-                        <div class="rules"></div>
+                        <legend class="expand-fieldset-content">Rules</legend>
+                        <div class="rules expandable-fieldset-content"></div>
                     </fieldset>
                 </div>
             </div>

@@ -74,6 +74,12 @@ module.exports = new class Application extends MatreshkaObject {
             'change:parserName': () => setParser(this.parserName),
             'rules@rulechange': () => {
                 this.set('configName', '', { silent: true });
+            },
+            'click::(legend)': ({ target }) => {
+                const expandable = target.parentNode.querySelector('.expandable-fieldset-content');
+                if(expandable) {
+                    expandable.classList.toggle('expanded');
+                }
             }
         });
     }
