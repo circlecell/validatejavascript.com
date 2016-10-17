@@ -4,4 +4,5 @@ module.exports = {
     plugins: require('./plugins'),
     output: require('./output'),
     module: require('./module'),
+    postcss: require('./postcss')
 };
