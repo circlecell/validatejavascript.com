@@ -3,7 +3,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const BabiliPlugin = require("babili-webpack-plugin");
 
 const { isDevelopment, isProduction, port } = require('./env');
 
@@ -32,10 +31,13 @@ if (isDevelopment) {
     );
 } else if(isProduction) {
     plugins.push(
-        new BabiliPlugin()
+        new webpack.optimize.UglifyJsPlugin({
+            compress: {
+                warnings: false
+            }
+        })
     );
 }
-
 
 plugins.push(
     new CopyWebpackPlugin([])
