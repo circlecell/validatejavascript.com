@@ -35,12 +35,12 @@ export default class Environments extends MatreshkaArray {
     }
 
     update(env) {
-        if(!env) return this;
+        if (!env) return this;
 
         for (const item of this) {
             const { environment } = item;
-            if(environment in env) {
-                item.checked = env[environment]
+            if (environment in env) {
+                item.checked = env[environment];
             }
         }
 

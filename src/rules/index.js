@@ -23,7 +23,7 @@ export default class Rules extends MatreshkaArray {
     }
 
     update(rules) {
-        if(!rules) return this;
+        if (!rules) return this;
 
         for (const group of this) {
             for (const rule of group) {

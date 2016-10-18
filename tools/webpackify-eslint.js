@@ -22,7 +22,7 @@ function generateRulesIndex(basedir) {
 
     output += '\n    return rules;\n};';
 
-    fs.writeFileSync(`${basedir}load-rules.js`, output)
+    fs.writeFileSync(`${basedir}load-rules.js`, output);
 }
 
 function webpackify() {

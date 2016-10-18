@@ -18,5 +18,5 @@ describe('Lint', () => {
         }
     });
 
-    xit('all rules include valid clarification URL', () => {})
+    xit('all rules include valid clarification URL', () => {});
 });

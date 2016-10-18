@@ -105,8 +105,6 @@ module.exports = new class Application extends MatreshkaObject {
         calc(this.parserOptions, 'sourceType', {
             object: this,
             key: 'modulesFeature'
-        }, modulesFeature => modulesFeature ? 'module' : 'script');
-
-
+        }, modulesFeature => (modulesFeature ? 'module' : 'script'));
     }
 }();

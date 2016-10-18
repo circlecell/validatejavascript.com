@@ -15,7 +15,7 @@ export default class extends MatreshkaObject {
                 href: {
                     source: 'ruleId',
                     handler: (ruleId) => {
-                        if(!ruleId) {
+                        if (!ruleId) {
                             return '';
                         }
 
@@ -39,6 +39,6 @@ export default class extends MatreshkaObject {
     }
 
     onRender() {
-        this.bindNode('href', ':sandbox .rule-clarification-container', display())
+        this.bindNode('href', ':sandbox .rule-clarification-container', display());
     }
 }
