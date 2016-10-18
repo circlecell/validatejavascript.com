@@ -1,4 +1,5 @@
 import MatreshkaObject from 'matreshka/object';
+import calc from 'matreshka/calc';
 import lint from './lint';
 import { setParser } from './lint/parser';
 import Environments from './environments';
@@ -11,8 +12,18 @@ module.exports = new class Application extends MatreshkaObject {
     constructor() {
         super({
             env: {},
-            rules: {}
+            rules: {},
+            parserOptions: {
+                ecmaVersion: 2017,
+                ecmaFeatures: {
+                    experimentalObjectRestSpread: true
+                }
+            }
         })
+        .set({
+            configName: localStorage.eslintio ? '' : 'airbnb'
+        })
+        .setData(JSON.parse(localStorage.eslintio || '{}'))
         .bindNode({
             sandbox: 'form',
             configName: {
@@ -40,7 +51,8 @@ module.exports = new class Application extends MatreshkaObject {
                 })
             },
             parserName: ':sandbox .parser-name',
-            useRecommended: ':sandbox .use-recommended'
+            useRecommended: ':sandbox .use-recommended',
+            modulesFeature: ':sandbox .modules-feature'
         })
         .instantiate({
             env: Environments,
@@ -70,6 +82,8 @@ module.exports = new class Application extends MatreshkaObject {
                 const results = lint(this.code, this.toJSON());
 
                 this.set({ results });
+
+                localStorage.eslintio = JSON.stringify(this);
             },
             'change:parserName': () => setParser(this.parserName),
             'rules@rulechange': () => {
@@ -82,5 +96,17 @@ module.exports = new class Application extends MatreshkaObject {
                 }
             }
         });
+
+        calc(this, 'modulesFeature', {
+            object: this.parserOptions,
+            key: 'sourceType'
+        }, sourceType => sourceType === 'module');
+
+        calc(this.parserOptions, 'sourceType', {
+            object: this,
+            key: 'modulesFeature'
+        }, modulesFeature => modulesFeature ? 'module' : 'script');
+
+
     }
 }();

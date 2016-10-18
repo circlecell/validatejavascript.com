@@ -18,10 +18,13 @@ export default class Rules extends MatreshkaArray {
                     this.trigger('rulechange');
                 }
             })
-            .recreate(plugins);
+            .recreate(plugins)
+            .update(data);
     }
 
     update(rules) {
+        if(!rules) return this;
+
         for (const group of this) {
             for (const rule of group) {
                 const fullRuleName = group.getFullRuleName(rule.ruleName, group.name);
@@ -34,6 +37,8 @@ export default class Rules extends MatreshkaArray {
                 rule.value = rules[fullRuleName] || recommended[fullRuleName] || 'off';
             }
         }
+
+        return this;
     }
 
     toJSON() {

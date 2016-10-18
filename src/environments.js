@@ -21,7 +21,8 @@ export default class Environments extends MatreshkaArray {
 
         this
             .bindNode('sandbox', parent.select('.environments'))
-            .rerender();
+            .rerender()
+            .update(data);
     }
     toJSON() {
         const result = {};
@@ -33,7 +34,16 @@ export default class Environments extends MatreshkaArray {
         return result;
     }
 
-    update() {
+    update(env) {
+        if(!env) return this;
+
+        for (const item of this) {
+            const { environment } = item;
+            if(environment in env) {
+                item.checked = env[environment]
+            }
+        }
+
         return this;
     }
 }
