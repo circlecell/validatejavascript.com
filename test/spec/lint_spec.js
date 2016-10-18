@@ -3,7 +3,9 @@ import fs from 'fs';
 import path from 'path';
 import lint from '../../src/lint';
 
-describe('Common', () => {
+describe('Lint', () => {
+    xit('allows to lint', () => {});
+
     it('does not warn about nonexisting rules', () => {
         const configsFolder = path.resolve(__dirname, '../../src/lint/configs');
         for (const configPath of fs.readdirSync(configsFolder)) {
@@ -15,4 +17,6 @@ describe('Common', () => {
             }
         }
     });
+
+    xit('all rules include valid clarification URL', () => {})
 });
