@@ -15,20 +15,20 @@ export default class Rules extends MatreshkaArray {
             }, null, { debounceCalc: false })
             .on({
                 '*.*@rulechange': () => {
-                    this.trigger('rulechange')
+                    this.trigger('rulechange');
                 }
             })
             .recreate(plugins);
     }
 
     update(rules) {
-        for(const group of this) {
-            for(const rule of group) {
+        for (const group of this) {
+            for (const rule of group) {
                 const fullRuleName = group.getFullRuleName(rule.ruleName, group.name);
-                const recommended = this.useRecommended
+                const recommended = (this.useRecommended
                     && group.plugin.configs
                     && group.plugin.configs.recommended
-                    && group.plugin.configs.recommended.rules
+                    && group.plugin.configs.recommended.rules)
                     || {};
 
                 rule.value = rules[fullRuleName] || recommended[fullRuleName] || 'off';
@@ -38,8 +38,8 @@ export default class Rules extends MatreshkaArray {
 
     toJSON() {
         const result = {};
-        for(const group of this) {
-            for(const { ruleName, value, isOn } of group) {
+        for (const group of this) {
+            for (const { ruleName, value, isOn } of group) {
                 result[group.getFullRuleName(ruleName, group.name)] = isOn ? value : 0;
             }
         }

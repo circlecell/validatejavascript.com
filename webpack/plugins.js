@@ -29,7 +29,7 @@ if (isDevelopment) {
             ignoreErrors: true
         })
     );
-} else if(isProduction) {
+} else if (isProduction) {
     plugins.push(
         new webpack.optimize.UglifyJsPlugin({
             compress: {

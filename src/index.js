@@ -19,7 +19,7 @@ module.exports = new class Application extends MatreshkaObject {
                 node: ':sandbox .config-name',
                 binder: {
                     initialize() {
-                        for(const { name } of configs) {
+                        for (const { name } of configs) {
                             this.appendChild(
                                 Object.assign(
                                     document.createElement('option'),
@@ -52,9 +52,9 @@ module.exports = new class Application extends MatreshkaObject {
         .onDebounce({
             'change:configName change:useRecommended': () => {
                 const { configName } = this;
-                if(configName) {
-                    const config = configs.find(config => config.name === configName);
-                    if(!config) {
+                if (configName) {
+                    const config = configs.find(({ name }) => name === configName);
+                    if (!config) {
                         throw Error(`Config with name ${configName} not found`);
                     }
 
@@ -65,7 +65,7 @@ module.exports = new class Application extends MatreshkaObject {
             }
         }, true)
         .on({
-            'submit::sandbox': evt => {
+            'submit::sandbox': (evt) => {
                 evt.preventDefault();
                 const results = lint(this.code, this.toJSON());
 
@@ -77,10 +77,10 @@ module.exports = new class Application extends MatreshkaObject {
             },
             'click::(legend)': ({ target }) => {
                 const expandable = target.parentNode.querySelector('.expandable-fieldset-content');
-                if(expandable) {
+                if (expandable) {
                     expandable.classList.toggle('expanded');
                 }
             }
         });
     }
-}
+}();

@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 module.exports = {
     entry: require('./entry'),
     devtool: require('./devtool'),

@@ -24,5 +24,5 @@ export default function codeMirrorBinder(config) {
             instance.off('change', changeCallback);
             instance.toTextArea();
         }
-    }
+    };
 }

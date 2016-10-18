@@ -7,8 +7,8 @@ module.exports = {
     }, {
         test: /\.js$/,
         loaders: [
-            `string-replace?search=require(config.parser)&replace=require("../../src/lint/parser")`, // eslint itself
-            `string-replace?search=require(rules[ruleId])&replace=undefined`, // eslint itself
+            'string-replace?search=require(config.parser)&replace=require("../../src/lint/parser")', // eslint itself
+            'string-replace?search=require(rules[ruleId])&replace=undefined' // eslint itself
         ]
     }, {
         test: /\.json$/,
@@ -17,4 +17,4 @@ module.exports = {
         test: /\.css$/,
         loader: ExtractTextPlugin.extract('style', 'css!postcss')
     }]
-}
+};

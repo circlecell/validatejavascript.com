@@ -1,5 +1,5 @@
 import MatreshkaObject from 'matreshka/object';
-import plugins from '../lint/plugins';console.log(plugins);
+import plugins from '../lint/plugins';
 
 export default class extends MatreshkaObject {
     constructor(data) {
@@ -7,12 +7,12 @@ export default class extends MatreshkaObject {
             .calc({
                 href: {
                     source: 'ruleId',
-                    handler: ruleId => {
+                    handler: (ruleId) => {
                         const splitted = ruleId.split('/');
                         let pluginName;
                         let ruleName;
 
-                        if(splitted.length === 2) {
+                        if (splitted.length === 2) {
                             [pluginName, ruleName] = splitted;
                         } else {
                             pluginName = 'internal';

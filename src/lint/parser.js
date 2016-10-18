@@ -2,12 +2,14 @@ let parser;
 
 function setParser(parserName) {
     return new Promise((resolve, reject) => {
-        if(parserName === 'espree') {
+        if (parserName === 'espree') {
             parser = require('espree');
+
             resolve();
-        } else if(parserName === 'babel') {
+        } else if (parserName === 'babel') {
             require.ensure([], (require) => {
-                parser = require('./babel');
+                parser = require('../lib/babel-parser');
+
                 resolve();
             }, 'babel-parser');
         } else {
@@ -25,4 +27,4 @@ setParser('espree');
 module.exports = {
     setParser,
     parse
-}
+};

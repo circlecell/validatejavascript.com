@@ -1,5 +1,6 @@
 const Config = require('eslint/lib/config');
 const rimraf = require('rimraf');
+const fs = require('fs');
 
 function bundleConfig(moduleName) {
     const { useSpecificConfig: config } = new Config({
@@ -7,9 +8,8 @@ function bundleConfig(moduleName) {
         useEslintrc: false
     });
 
-    const fs = require('fs');
-    for(let key in config.rules) {
-        if(key.indexOf('import/') === 0) {
+    for (const key in config.rules) { // eslint-disable-line no-restricted-syntax
+        if (key.indexOf('import/') === 0) {
             delete config.rules[key];
         }
     }

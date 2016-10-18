@@ -1,5 +1,5 @@
 import MatreshkaObject from 'matreshka/object';
-//import prop from 'matreshka/binders/prop';
+// import prop from 'matreshka/binders/prop';
 
 export default class Rule extends MatreshkaObject {
     renderer = `<label title="{{ dynamicValueJSON }}" class="col-md-4 col-sm-6 form-check-label">
@@ -10,11 +10,11 @@ export default class Rule extends MatreshkaObject {
             .calc({
                 value: {
                     source: 'valueJSON',
-                    handler: value => value ? JSON.parse(value) : 0
+                    handler: value => (value ? JSON.parse(value) : 0)
                 },
                 isOn: {
                     source: 'value',
-                    handler: value => {
+                    handler: (value) => {
                         const v = value instanceof Array ? value[0] : value;
                         return v !== 0 && v !== 'off';
                     }
@@ -25,9 +25,9 @@ export default class Rule extends MatreshkaObject {
                         const [errorLevel, ...settings] = value instanceof Array ? value : [value];
                         let newErrorLevel;
 
-                        if(!isOn) {
+                        if (!isOn) {
                             newErrorLevel = 'off';
-                        } else if(errorLevel === 'off' || errorLevel === 0) {
+                        } else if (errorLevel === 'off' || errorLevel === 0) {
                             newErrorLevel = 'error';
                         } else {
                             newErrorLevel = errorLevel;

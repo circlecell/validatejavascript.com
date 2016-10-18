@@ -11,7 +11,7 @@ export default class Environments extends MatreshkaArray {
     constructor(data, parent) {
         super();
 
-        for(const [environment, description] of Object.entries(environments)) {
+        for (const [environment, description] of Object.entries(environments)) {
             this.push({
                 description,
                 environment,
@@ -33,8 +33,7 @@ export default class Environments extends MatreshkaArray {
         return result;
     }
 
-    update(data) {
-        console.log(data);
+    update() {
         return this;
     }
 }

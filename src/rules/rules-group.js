@@ -14,7 +14,7 @@ export default class RulesGroup extends MatreshkaArray {
             .set(plugin);
 
         const { plugin: { rules } } = plugin;
-        for(const ruleName of Object.keys(rules)) {
+        for (const ruleName of Object.keys(rules)) {
             this.push({
                 ruleName,
                 value: 'off'
