@@ -1,4 +1,4 @@
-const { cp, rm, test, mkdir } = require('shelljs');
+const { cp, rm, test, mkdir, find } = require('shelljs');
 const path = require('path');
 
 const WEBPACK_DIR = 'eslint/webpack/';
