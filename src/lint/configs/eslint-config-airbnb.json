@@ -14,6 +14,7 @@
 					"render",
 					"getInitialState",
 					"getDefaultProps",
+					"getChildContext",
 					"componentWillMount",
 					"componentDidMount",
 					"componentWillReceiveProps",
@@ -131,7 +132,7 @@
 			{
 				"object": "arguments",
 				"property": "callee",
-				"message": "arguments.callee is deprecated,"
+				"message": "arguments.callee is deprecated"
 			},
 			{
 				"property": "__defineGetter__",
@@ -140,6 +141,11 @@
 			{
 				"property": "__defineSetter__",
 				"message": "Please use Object.defineProperty instead."
+			},
+			{
+				"object": "Math",
+				"property": "pow",
+				"message": "Use the exponentiation operator (**) instead."
 			}
 		],
 		"no-return-assign": "error",
@@ -160,6 +166,7 @@
 		"no-useless-call": "off",
 		"no-useless-concat": "error",
 		"no-useless-escape": "error",
+		"no-useless-return": "error",
 		"no-void": "error",
 		"no-warning-comments": [
 			"off",
@@ -177,12 +184,21 @@
 		"vars-on-top": "error",
 		"wrap-iife": [
 			"error",
-			"outside"
+			"outside",
+			{
+				"functionPrototypeMethods": false
+			}
 		],
 		"yoda": "error",
 		"comma-dangle": [
 			"error",
-			"always-multiline"
+			{
+				"arrays": "always-multiline",
+				"objects": "always-multiline",
+				"imports": "always-multiline",
+				"exports": "always-multiline",
+				"functions": "always-multiline"
+			}
 		],
 		"no-cond-assign": [
 			"error",
@@ -289,6 +305,13 @@
 			"error",
 			"never"
 		],
+		"func-name-matching": [
+			"off",
+			"always",
+			{
+				"includeCommonJSModuleExports": false
+			}
+		],
 		"func-names": "warn",
 		"func-style": [
 			"off",
@@ -303,7 +326,15 @@
 			{
 				"SwitchCase": 1,
 				"VariableDeclarator": 1,
-				"outerIIFEBody": 1
+				"outerIIFEBody": 1,
+				"FunctionDeclaration": {
+					"parameters": 1,
+					"body": 1
+				},
+				"FunctionExpression": {
+					"parameters": 1,
+					"body": 1
+				}
 			}
 		],
 		"jsx-quotes": [
@@ -366,6 +397,7 @@
 			{
 				"ignoreUrls": true,
 				"ignoreComments": false,
+				"ignoreRegExpLiterals": true,
 				"ignoreStrings": true,
 				"ignoreTemplateLiterals": true
 			}
@@ -400,7 +432,14 @@
 		"new-cap": [
 			"error",
 			{
-				"newIsCap": true
+				"newIsCap": true,
+				"newIsCapExceptions": [],
+				"capIsNew": false,
+				"capIsNewExceptions": [
+					"Immutable.Map",
+					"Immutable.Set",
+					"Immutable.List"
+				]
 			}
 		],
 		"new-parens": "error",
@@ -475,6 +514,7 @@
 		"no-restricted-syntax": [
 			"error",
 			"ForInStatement",
+			"ForOfStatement",
 			"LabeledStatement",
 			"WithStatement"
 		],
@@ -577,7 +617,8 @@
 			"error",
 			{
 				"anonymous": "always",
-				"named": "never"
+				"named": "never",
+				"asyncArrow": "always"
 			}
 		],
 		"space-in-parens": [
@@ -597,14 +638,27 @@
 			"error",
 			"always",
 			{
-				"exceptions": [
-					"-",
-					"+"
-				],
-				"markers": [
-					"=",
-					"!"
-				]
+				"line": {
+					"exceptions": [
+						"-",
+						"+"
+					],
+					"markers": [
+						"=",
+						"!"
+					]
+				},
+				"block": {
+					"exceptions": [
+						"-",
+						"+"
+					],
+					"markers": [
+						"=",
+						"!"
+					],
+					"balanced": false
+				}
 			}
 		],
 		"unicode-bom": [
@@ -946,7 +1000,7 @@
 			"error",
 			{
 				"customValidators": [],
-				"skipShapeProps": false
+				"skipShapeProps": true
 			}
 		],
 		"react/style-prop-object": "error",

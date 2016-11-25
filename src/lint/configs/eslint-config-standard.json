@@ -312,7 +312,10 @@
 		"valid-typeof": 2,
 		"wrap-iife": [
 			2,
-			"any"
+			"any",
+			{
+				"functionPrototypeMethods": true
+			}
 		],
 		"yield-star-spacing": [
 			2,

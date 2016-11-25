@@ -1,16 +1,20 @@
 {
     "parser": "babel-eslint",
     "extends": [
-        "plugin:import/errors",
-        "plugin:import/warnings",
-        "airbnb"
+        "airbnb-base"
     ],
     "rules": {
         "indent": ["error", 4],
         "no-var": "error",
         "comma-dangle": ["error", "never"],
         "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
-        "global-require": 0
+        "global-require": 0,
+        "no-restricted-syntax": [
+          "error",
+          "ForInStatement",
+          "LabeledStatement",
+          "WithStatement"
+        ]
     },
     "env": {
         "browser": true,

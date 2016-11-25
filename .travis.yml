@@ -4,6 +4,7 @@ node_js:
   - '6'
 install:
   - npm run install-everything
+  - npm install -g pm2
 before_install:
 - openssl aes-256-cbc -K $encrypted_995f46ea43c0_key -iv $encrypted_995f46ea43c0_iv
   -in deploy_rsa.enc -out deploy_rsa -d
