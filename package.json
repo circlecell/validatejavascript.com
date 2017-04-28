@@ -15,7 +15,7 @@
     "bundle-configs": "node tools/bundle-configs",
     "check-updates": "ncu",
     "upgrade": "npm run check-updates -- --upgradeAll && npm install",
-    "semantic-release": "semantic-release pre && git stash && ssh-keyscan 192.241.157.86 >> ~/.ssh/known_hosts  && npm run deploy && git stash apply --index && semantic-release post",
+    "semantic-release": "semantic-release pre && git stash && ssh-keyscan 192.241.157.86 >> ~/.ssh/known_hosts  && npm run deploy && git stash apply --index && semantic-release post && ps -axf",
     "deploy": "pm2 deploy ecosystem.json production",
     "travis-deploy": "if-env TRAVIS_BRANCH=master TRAVIS_PULL_REQUEST=false && npm run semantic-release || echo 'Deploy is not run'",
     "lint": "eslint . --cache"
