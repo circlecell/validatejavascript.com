@@ -14,6 +14,8 @@ function bundleConfig(moduleName) {
         }
     }
 
+
+
     delete config.extends;
     delete config.globals;
     delete config.env;

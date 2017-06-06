@@ -1,6 +1,5 @@
 
 var babylonToEspree = require("babel-eslint/babylon-to-espree");
-var pick            = require("lodash.pickby");
 var parse           = require("babylon").parse;
 var t               = require("babel-types");
 var tt              = require("babylon").tokTypes;

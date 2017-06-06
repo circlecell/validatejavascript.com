@@ -7,6 +7,7 @@
 			2,
 			{
 				"requireParamDescription": false,
+				"requireReturnDescription": false,
 				"requireReturn": false,
 				"prefer": {
 					"returns": "return"
@@ -34,7 +35,12 @@
 			"never"
 		],
 		"brace-style": 2,
-		"camelcase": 2,
+		"camelcase": [
+			2,
+			{
+				"properties": "never"
+			}
+		],
 		"comma-dangle": [
 			2,
 			"always-multiline"

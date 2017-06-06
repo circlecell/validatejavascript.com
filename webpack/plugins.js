@@ -17,9 +17,10 @@ const plugins = [
             return order.indexOf(nameA) - order.indexOf(nameB);
         }
     }),
-    new ExtractTextPlugin('css/style.css', {
+    new ExtractTextPlugin({
+        filename: 'css/style.css',
         allChunks: true
-    })
+    }),
 ];
 
 if (isDevelopment) {

@@ -4,6 +4,5 @@ module.exports = {
     devtool: require('./devtool'),
     plugins: require('./plugins'),
     output: require('./output'),
-    module: require('./module'),
-    postcss: require('./postcss')
+    module: require('./module')
 };
