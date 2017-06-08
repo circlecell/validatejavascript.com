@@ -1,5 +1,4 @@
-const { NODE_ENV } = process.env;
-const { port } = require('minimist')(process.argv.slice(2));
+const { NODE_ENV, PORT } = process.env;
 
 if (!NODE_ENV) {
     throw Error('NODE_ENV cannot be falsy');
@@ -8,5 +7,6 @@ if (!NODE_ENV) {
 module.exports = {
     isDevelopment: NODE_ENV === 'development',
     isProduction: NODE_ENV === 'production',
-    port
+    port: PORT,
+    devPort: +PORT + 1
 };

@@ -4,11 +4,11 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const { isDevelopment, isProduction, port } = require('./env');
+const { isDevelopment, isProduction, port, devPort } = require('./env');
 
 const plugins = [
     new HtmlWebpackPlugin({
-        template: 'index.html',
+        template: 'packages/frontend/index.html',
         chunksSortMode: (a, b) => {
             const order = ['manifest', 'vendor', 'app'];
             const nameA = a.names[0];
@@ -25,8 +25,9 @@ const plugins = [
 
 if (isDevelopment) {
     plugins.push(
+        new webpack.HotModuleReplacementPlugin(),
         new OpenBrowserPlugin({
-            url: `http://localhost:${port}`,
+            url: `http://localhost:${devPort}`,
             ignoreErrors: true
         })
     );

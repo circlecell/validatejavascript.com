@@ -4,5 +4,6 @@ module.exports = {
     devtool: require('./devtool'),
     plugins: require('./plugins'),
     output: require('./output'),
-    module: require('./module')
+    module: require('./module'),
+    devServer: require('./devServer')
 };
