@@ -5,76 +5,140 @@
         <title>ECMAScript Lint</title>
     </head>
     <body>
-
-        <form class="container">
-            <h1>ECMAScript Lint</h1>
-            <div class="row">
-                <div class="col-md-12">
-                    <textarea class="code form-control"></textarea>
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <fieldset class="form-group">
-                        <legend>Results</legend>
-                        <div class="results"></div>
-                    </fieldset>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <fieldset>
-                        <legend class="expand-fieldset-content">Settings</legend>
-                        <div class="expandable-fieldset-content">
-                            <div class="form-group">
-                                <label>Config:</label>
-                                <select class="config-name form-control">
-                                    <option value="">Custom</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label> Parser:</label>
-                                <select class="parser-name form-control">
-                                    <option value="espree">Espree</option>
-                                    <option value="babel">Babel</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>
-                                    <input type="checkbox" class="use-recommended">
-                                    Use recommended values if available
-                                </label>
-                            </div>
-                            <div class="form-group">
-                                <label>
-                                    <input type="checkbox" class="modules-feature">
-                                    ECMAScript modules
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <fieldset>
-                        <legend class="expand-fieldset-content">Environments</legend>
-                        <div class="environments expandable-fieldset-content"></div>
-                    </fieldset>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <fieldset>
-                        <legend class="expand-fieldset-content">Rules</legend>
-                        <div class="rules expandable-fieldset-content"></div>
-                    </fieldset>
-                    <strong>eslint.io is not a part of <a href="http://eslint.org/">ESLint project</a> but powered by it</strong>
-                </div>
-            </div>
+    <header>
+        <nav>
+            <div class="dev-tools-logo">JS</div>
+            <div class="logo">
+                <h1>ValidateJavaScript <span class="sub-title">- Find &amp; Fix JavaScript Errors</span></h1> </div>
+            <label for="drop" class="toggle">Menu</label>
+            <input type="checkbox" id="drop">
+            <ul class="menu">
+                <li class="dropdown">
+                    <label for="drop-1" class="toggle">More Developer Tools</label> <a href="https://jsonlint.com/#"><span class="three-lines"></span><span class="more-dev">More Developer</span> <span class="more-tools">Tools</span></a>
+                    <input type="checkbox" id="drop-1">
+                    <ul>
+                        <li class="jscompress"><a target="_blank" href="https://jscompress.com/"><strong>JSCompress</strong><br><span class="tagline-title">The JavaScript Compression Tool</span></a></li>
+                        <li class="json"><a target="_blank" href="https://jsonlint.com/"><strong>JSONLint</strong><br><span class="tagline-title">The JavaScript Compression Tool</span></a></li>
+                        <li class="comp"><a target="_blank" href="https://jsoncompare.com/"><strong>JSONCompare</strong><br><span class="tagline-title">The Advanced JSON Linter</span></a></li>
+                        <li class="keygen"><a target="_blank" href="https://randomkeygen.com/"><strong>RandomKeygen</strong><br><span class="tagline-title">The Random Password Generator</span></a></li>
+                        <li class="dns"><a target="_blank" href="https://dns-lookup.com/"><strong>DNS-Lookup</strong><br><span class="tagline-title">The Professional DNS &amp; IP Lookup Tool</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <div class="container">
+        <div class="ad top">
+            <a href="#"><img src="https://1stwebdesigner.com/wp-content/uploads/2017/04/adobe-ad.jpg" width="728" height="90"></a>
+        </div>
+        <form id="main">
+            <textarea id="code" name="code"></textarea>
         </form>
-    </body>
+        <section id="result-container">
+            <pre class="result-success result-item" style="display: none">No JavaScript Errors</pre>
+            <div class="result-errors"></div>
+        </section>
+
+        <button type="submit" class="btn btn-primary left" form="main">Find &amp; Fix JavaScript Errors</button>
+        <input id="tab1" type="radio" name="tabs">
+        <label for="tab1" class="right">Settings</label>
+        <input id="tab2" type="radio" name="tabs">
+        <label for="tab2" class="right">Environments</label>
+        <input id="tab3" type="radio" name="tabs" checked>
+        <label for="tab3" class="right">Rules</label>
+        <div class="tabs-settings" id="tabs-content-1">
+            <fieldset>
+                <legend>Settings</legend>
+                <div class="form-group left">
+                    <label><strong>Config:</strong></label>
+                    <select class="config-name form-control">
+                        <option value="">Custom</option>
+                        <option value="airbnb">airbnb</option>
+                        <option value="eslint">eslint</option>
+                        <option value="google">google</option>
+                        <option value="standard">standard</option>
+                    </select>
+                </div>
+                <div class="form-group feature">
+                    <label>
+                        <input type="checkbox" class="modules-feature"> ECMAScript modules</label>
+                </div>
+            </fieldset>
+        </div>
+        <div class="tabs-settings" id="tabs-content-2">
+            <fieldset>
+                <legend>Environments</legend>
+                <label title="defines require() and define() as global variables as per the amd spec." class="form-check-label">
+                    <input type="checkbox">amd</label>
+                <label title="AppleScript global variables." class="form-check-label">
+                    <input type="checkbox">applescript</label>
+                <label title="Atom test helper globals." class="form-check-label">
+                    <input type="checkbox">atomtest</label>
+                <label title="browser global variables." class="form-check-label">
+                    <input type="checkbox">browser</label>
+                <label title="CommonJS global variables and CommonJS scoping (use this for browser" class="form-check-label">
+                    <input type="checkbox">commonjs</label>
+                <label title="Ember test helper globals." class="form-check-label">
+                    <input type="checkbox">embertest</label>
+                <label title="enable all ECMAScript 6 features except for modules (this automatically sets the ecmaVersion parser option to 6)." class="form-check-label">
+                    <input type="checkbox">es6</label>
+                <label title="GreaseMonkey globals." class="form-check-label">
+                    <input type="checkbox">greasemonkey</label>
+                <label title="adds all of the Jasmine testing global variables for version 1.3 and 2.0." class="form-check-label">
+                    <input type="checkbox">jasmine</label>
+                <label title="Jest global variables." class="form-check-label">
+                    <input type="checkbox">jest</label>
+                <label title="jQuery global variables." class="form-check-label">
+                    <input type="checkbox">jquery</label>
+                <label title="Meteor global variables." class="form-check-label">
+                    <input type="checkbox">meteor</label>
+                <label title="adds all of the Mocha testing global variables." class="form-check-label">
+                    <input type="checkbox">mocha</label>
+                <label title="MongoDB global variables." class="form-check-label">
+                    <input type="checkbox">mongo</label>
+                <label title="Java 8 Nashorn global variables." class="form-check-label">
+                    <input type="checkbox">nashorn</label>
+                <label title="Node.js global variables and Node.js scoping." class="form-check-label">
+                    <input type="checkbox">node</label>
+                <label title="PhantomJS global variables." class="form-check-label">
+                    <input type="checkbox">phantomjs</label>
+                <label title="Prototype.js global variables." class="form-check-label">
+                    <input type="checkbox">prototypejs</label>
+                <label title="Protractor global variables." class="form-check-label">
+                    <input type="checkbox">protractor</label>
+                <label title="QUnit global variables." class="form-check-label">
+                    <input type="checkbox">qunit</label>
+                <label title="Service Worker global variables." class="form-check-label">
+                    <input type="checkbox">serviceworker</label>
+                <label title="node" class="form-check-label">
+                    <input type="checkbox">shared</label>
+                <label title="ShellJS global variables." class="form-check-label">
+                    <input type="checkbox">shelljs</label>
+                <label title="WebExtensions globals." class="form-check-label">
+                    <input type="checkbox">webextensions</label>
+                <label title="web workers global variables." class="form-check-label">
+                    <input type="checkbox">worker</label>
+            </fieldset>
+        </div>
+        <div class="tabs-settings" id="tabs-content-3">
+            <fieldset>
+                <div class="rules expandable-fieldset-content">
+
+                </div>
+            </fieldset>
+        </div>
+        <div class="info">
+            <p class="heading">About ValdateJavaScript</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p class="heading">Tips &amp; Tricks</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            <p class="heading">Credits</p>
+            <p>Maintained by Andrey Gubanov. You can download the ValidateJavaScript source code on <a href="" target="_blank" data-ga="sourceLink">GitHub</a>.</p>
+        </div>
+        <div class="ad bottom">
+            <a href="#"><img src="https://1stwebdesigner.com/wp-content/uploads/2017/04/adobe-ad.jpg" width="728" height="90"></a>
+        </div>
+    </div>
+    <footer> © 2017 ValidateJavaScript.com</footer>
+</body>
 </html>

@@ -9,6 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "babel-polyfill": "^6.23.0"
+    "babel-polyfill": "^6.23.0",
+    "codemirror": "^5.26.0",
+    "matreshka": "^2.4.0",
+    "matreshka-binder-codemirror": "0.0.5"
   }
 }

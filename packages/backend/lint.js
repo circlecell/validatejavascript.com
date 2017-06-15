@@ -1,38 +1,35 @@
 var CLIEngine = require("eslint").CLIEngine;
 const airbnb = require('eslint-config-airbnb');
 
+//console.log(require('eslint-plugin-react'))
+
+// console.log(require("eslint/conf/eslint-all"))
 //console.log(airbnb)
 
 //console.log()
 
-function getRules(config) {
-    const rules = {};
-    if(config.rules) {
-        Object.assign(rules, config.rules);
-    }
 
-    if(config.extends) {
-        for(const configPath of config.extends) {
-            Object.assign(rules, getRules(require(configPath)))
-        }
-    }
-
-    return rules;
-}
-
-var cli = new CLIEngine({
-    envs: ["browser", "mocha"],
-    useEslintrc: false,
-    fix: true,
-    parser: "babel-eslint",
-    rules: getRules(airbnb)
-});
 
 //cli.addPlugin();
 
 // lint the supplied text and optionally set
 // a filename that is displayed in the report
-var report = cli.executeOnText("var foo = <yolki     />;", "foo.js");
 
+//
 
-console.log(report.results[0])
+//console.log(require('eslint-plugin-react'))
+
+//console.log(require('eslint/lib/load-rules')())
+module.exports = (code, {
+    envs = ['browser'],
+    fix,
+    rules,
+}) => new CLIEngine({
+        envs,
+        fix,
+        plugins: ['jsx-a11y', 'import', 'react'],
+        useEslintrc: false,
+        parser: "babel-eslint",
+        rules: /*getRules(require("eslint/conf/eslint-all"))*/getRules(airbnb)
+    })
+    .executeOnText(code);
