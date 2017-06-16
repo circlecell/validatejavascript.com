@@ -6,6 +6,7 @@ import 'codemirror/mode/javascript/javascript';
 
 import Rules from './Rules';
 import Messages from './Messages';
+import Environments from './Environments';
 
 module.exports = new class App extends MatreshkaObject {
     constructor() {
@@ -46,7 +47,8 @@ module.exports = new class App extends MatreshkaObject {
             })
             .instantiate({
                 rules: Rules,
-                messages: Messages
+                messages: Messages,
+                environments: Environments
             })
             .init()
 
@@ -65,19 +67,37 @@ module.exports = new class App extends MatreshkaObject {
     }
 
     async lint() {
+        if(!this.code) {
+            this.messages = [{
+                message: 'Code field value cannot be an empty string',
+                line: 1,
+                column: 1
+            }]
+
+            return this;
+        }
+
+        console.log(this.environments.toJSON())
+
         const { payload: { messages, output } } = await( await fetch('/api/lint', {
             method: 'post',
             body: JSON.stringify({
                 code: this.code,
-                rules: this.rules
+                rules: this.rules,
+                envs: this.environments.toJSON(false).filter(({ checked }) => checked).map(({ environment }) => environment)
             }),
             headers: {
                 'Content-Type': 'application/json'
             }
         })).json();
 
-        this.code = output;
+        if(output) {
+            this.code = output;
+        }
+
         this.messages = messages;
         this.noErrors = !messages.length;
+
+        return this;
     }
 }

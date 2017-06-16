@@ -1,7 +1,8 @@
 var CLIEngine = require("eslint").CLIEngine;
+const stripAnsi = require('strip-ansi')
 
 const lint = (code, {
-    envs = ['browser'],
+    envs,
     fix =true,
     rules,
 }) => new CLIEngine({
@@ -14,13 +15,15 @@ const lint = (code, {
     })
     .executeOnText(code).results[0];
 
-
 module.exports = (req, res) => {
-    const { code, rules } = req.body;
+    const { code, rules, envs } = req.body;
+    const result = lint(code, { rules, envs });
 
-    try {  lint(code, { rules }) } catch(e) { console.log(e)}
+    result.messages.forEach(message => {
+        message.message = stripAnsi(message.message);
+    })
 
     res.json({
-        payload: {}//lint(code, { rules })
+        payload: result
     })
 }

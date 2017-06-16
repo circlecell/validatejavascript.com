@@ -930,7 +930,7 @@ main {
 
 button[type="submit"] {
     padding: 10px 15px 11px;
-    margin: 0 10px 0 0;
+    margin: 0 10px 15px 0;
 	background-color: #fff;
     text-decoration: none;
     border: 1px solid #e1e1e1;
@@ -1011,10 +1011,8 @@ footer {
     padding-bottom: 3.5em !important;
 }
 
-.tabs-settings {
-    display: none;
+.settings {
     padding: 30px 30px 10px;
-    margin: 0;
 }
 
 input {
@@ -1028,20 +1026,20 @@ fieldset {
     border: 0;
 }
 
-.tabs-settings input {
+.settings input {
     display: inline-block;
     height: 27px;
     margin: 0 5px 0 0;
 }
 
-.tabs-settings legend {
+.settings legend {
     font-size: 14px;
     font-weight: 700;
     padding: 0 0 10px;
     letter-spacing: 0.5px;
 }
 
-.tabs-settings label {
+.settings label {
     color: #333;
     padding: 0 0 7px;
     width: 24.7%;
@@ -1050,7 +1048,7 @@ fieldset {
     font-family: 'Anonymous Pro', monospace;
 }
 
-.tabs-settings hr {
+.settings hr {
     height: 1px;
     color: #333;
     background: #e1e1e1;
@@ -1106,10 +1104,7 @@ input:checked + label {
     border-radius: 2px 2px 0 0;
 }
 
-#tab1:checked ~ #tabs-content-1,
-#tab2:checked ~ #tabs-content-2,
-#tab3:checked ~ #tabs-content-3,
-#tab4:checked ~ #tabs-content-4 {
+.settings {
     display: block;
     background: #f7f7f7;
     border-radius: 2px;
@@ -1121,7 +1116,7 @@ input:checked + label {
 }
 
 @media screen and (max-width: 1000px) {
-    .tabs-settings label {
+    .settings label {
         width: 32%
     }
     .form-group label {
@@ -1147,7 +1142,7 @@ input:checked + label {
     .three-lines {
         margin: 7px 5px
     }
-    .tabs-settings label {
+    .settings label {
         width: 48%
     }
     .form-group label {
@@ -1159,7 +1154,7 @@ input:checked + label {
 }
 
 @media screen and (max-width: 500px) {
-    .tabs-settings label {
+    .settings label {
         width: 100%
     }
     .env {

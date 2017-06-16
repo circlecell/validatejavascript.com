@@ -40,13 +40,8 @@
         </section>
 
         <button type="submit" class="btn btn-primary left" form="main">Find &amp; Fix JavaScript Errors</button>
-        <input id="tab1" type="radio" name="tabs">
-        <label for="tab1" class="right">Settings</label>
-        <input id="tab2" type="radio" name="tabs">
-        <label for="tab2" class="right">Environments</label>
-        <input id="tab3" type="radio" name="tabs" checked>
-        <label for="tab3" class="right">Rules</label>
-        <div class="tabs-settings" id="tabs-content-1">
+
+        <div class="settings" id="tabs-content-1">
             <fieldset>
                 <legend>Settings</legend>
                 <div class="form-group left">
@@ -59,70 +54,15 @@
                         <option value="standard">standard</option>
                     </select>
                 </div>
-                <div class="form-group feature">
-                    <label>
-                        <input type="checkbox" class="modules-feature"> ECMAScript modules</label>
-                </div>
             </fieldset>
-        </div>
-        <div class="tabs-settings" id="tabs-content-2">
+            <hr>
             <fieldset>
                 <legend>Environments</legend>
-                <label title="defines require() and define() as global variables as per the amd spec." class="form-check-label">
-                    <input type="checkbox">amd</label>
-                <label title="AppleScript global variables." class="form-check-label">
-                    <input type="checkbox">applescript</label>
-                <label title="Atom test helper globals." class="form-check-label">
-                    <input type="checkbox">atomtest</label>
-                <label title="browser global variables." class="form-check-label">
-                    <input type="checkbox">browser</label>
-                <label title="CommonJS global variables and CommonJS scoping (use this for browser" class="form-check-label">
-                    <input type="checkbox">commonjs</label>
-                <label title="Ember test helper globals." class="form-check-label">
-                    <input type="checkbox">embertest</label>
-                <label title="enable all ECMAScript 6 features except for modules (this automatically sets the ecmaVersion parser option to 6)." class="form-check-label">
-                    <input type="checkbox">es6</label>
-                <label title="GreaseMonkey globals." class="form-check-label">
-                    <input type="checkbox">greasemonkey</label>
-                <label title="adds all of the Jasmine testing global variables for version 1.3 and 2.0." class="form-check-label">
-                    <input type="checkbox">jasmine</label>
-                <label title="Jest global variables." class="form-check-label">
-                    <input type="checkbox">jest</label>
-                <label title="jQuery global variables." class="form-check-label">
-                    <input type="checkbox">jquery</label>
-                <label title="Meteor global variables." class="form-check-label">
-                    <input type="checkbox">meteor</label>
-                <label title="adds all of the Mocha testing global variables." class="form-check-label">
-                    <input type="checkbox">mocha</label>
-                <label title="MongoDB global variables." class="form-check-label">
-                    <input type="checkbox">mongo</label>
-                <label title="Java 8 Nashorn global variables." class="form-check-label">
-                    <input type="checkbox">nashorn</label>
-                <label title="Node.js global variables and Node.js scoping." class="form-check-label">
-                    <input type="checkbox">node</label>
-                <label title="PhantomJS global variables." class="form-check-label">
-                    <input type="checkbox">phantomjs</label>
-                <label title="Prototype.js global variables." class="form-check-label">
-                    <input type="checkbox">prototypejs</label>
-                <label title="Protractor global variables." class="form-check-label">
-                    <input type="checkbox">protractor</label>
-                <label title="QUnit global variables." class="form-check-label">
-                    <input type="checkbox">qunit</label>
-                <label title="Service Worker global variables." class="form-check-label">
-                    <input type="checkbox">serviceworker</label>
-                <label title="node" class="form-check-label">
-                    <input type="checkbox">shared</label>
-                <label title="ShellJS global variables." class="form-check-label">
-                    <input type="checkbox">shelljs</label>
-                <label title="WebExtensions globals." class="form-check-label">
-                    <input type="checkbox">webextensions</label>
-                <label title="web workers global variables." class="form-check-label">
-                    <input type="checkbox">worker</label>
+                <div class="environments"></div>
             </fieldset>
-        </div>
-        <div class="tabs-settings" id="tabs-content-3">
+            <hr>
             <fieldset>
-                <div class="rules expandable-fieldset-content">
+                <div class="rules">
 
                 </div>
             </fieldset>
