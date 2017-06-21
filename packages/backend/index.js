@@ -16,6 +16,12 @@ const port = PORT;
 app.use(bodyParser.json());
 
 if(NODE_ENV === 'production') {
+    app.use(function(req, res, next) {
+      if (/.*\.js/.test(req.path)) {
+        res.charset = "utf-8";
+      }
+      next();
+    });
     app.use(express.static(`${__dirname}/public`));
 }
 
