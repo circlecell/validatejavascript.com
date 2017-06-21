@@ -1,4 +1,4 @@
-{
+module.exports = {
     "apps" : [
       {
         "name"      : "validatejavascript.com",

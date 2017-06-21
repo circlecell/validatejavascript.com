@@ -14,7 +14,7 @@
     "build": "NODE_ENV=production webpack --config webpack --display-error-details",
     "upgrade": "ncu -u -a -x eslint-plugin-jsx-a11y && npm install && lerna exec --concurrency 1 -- ncu -a && lerna exec -- npm install",
     "semantic-release": "semantic-release pre && ssh-keyscan 192.241.157.86 >> ~/.ssh/known_hosts && npm run deploy && semantic-release post",
-    "deploy": "pm2 deploy ecosystem.json production --force",
+    "deploy": "pm2 deploy ecosystem.config.js production --force",
     "travis-deploy": "if-env TRAVIS_BRANCH=master TRAVIS_PULL_REQUEST=false && npm run semantic-release || echo 'Deploy is not run'",
     "lint": "eslint .",
     "open-browser": "opn http://localhost:$PORT",
