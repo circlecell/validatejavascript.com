@@ -22,7 +22,7 @@
       "repo" : "git@github.com:circlecell/eslint.io.git",
       "path" : "/var/web/eslint.io",
       "ssh_options": ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
-      "post-deploy" : "rm -rf node_modules; npm run install-everything && npm run bundle"
+      "post-deploy" : "rm -rf node_modules; npm run install-all && npm run bundle"
     }
   }
 }
