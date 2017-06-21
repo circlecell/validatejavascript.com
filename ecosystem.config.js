@@ -22,7 +22,7 @@ module.exports = {
       "repo" : "git@github.com:circlecell/eslint.io.git",
       "path" : "/var/web/eslint.io",
       "ssh_options": ["StrictHostKeyChecking=no", "PasswordAuthentication=no"],
-      "post-deploy" : "rm -rf node_modules; npm run install-all && npm run build && npm start"
+      "post-deploy" : "npm run install-all && npm run build && npm start"
     }
   }
 }
