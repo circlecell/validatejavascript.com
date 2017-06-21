@@ -18,7 +18,8 @@
     "travis-deploy": "if-env TRAVIS_BRANCH=master TRAVIS_PULL_REQUEST=false && npm run semantic-release || echo 'Deploy is not run'",
     "lint": "eslint .",
     "open-browser": "opn http://localhost:$PORT",
-    "try-production": "NODE_ENV=production PORT=8016 concurrently 'npm run open-browser' 'node ./packages/backend'"
+    "try-production": "NODE_ENV=production PORT=8016 concurrently 'npm run open-browser' 'node ./packages/backend'",
+    "start": "pm2 startOrRestart ecosystem.config.js --env production"
   },
   "config": {
     "validate-commit-msg": {
