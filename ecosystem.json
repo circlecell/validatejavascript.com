@@ -7,7 +7,7 @@
         "out_file": "/var/web/validatejavascript.com/logs/out.log",
         "env": {
             "NODE_ENV": "production",
-            "PORT": "TODO"
+            "PORT": "5004"
         },
         "env_production" : {
 
