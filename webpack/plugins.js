@@ -42,7 +42,10 @@ if (isDevelopment) {
 }
 
 plugins.push(
-    new CopyWebpackPlugin([])
+    new CopyWebpackPlugin([{
+        from: './packages/frontend/icons',
+        to: './icons'
+    }])
 );
 
 module.exports = plugins;

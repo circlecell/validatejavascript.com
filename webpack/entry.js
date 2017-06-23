@@ -10,7 +10,6 @@ if (isDevelopment) {
 
 entry.app.push(
     './packages/frontend/css/style.css',
-    // 'babel-polyfill',
     './packages/frontend/index'
 );
 
