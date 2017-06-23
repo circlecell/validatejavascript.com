@@ -4,7 +4,7 @@ const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
-const { isDevelopment, isProduction, port, devPort } = require('./env');
+const { isDevelopment, isProduction, devPort } = require('./env');
 
 const plugins = [
     new HtmlWebpackPlugin({
@@ -20,7 +20,7 @@ const plugins = [
     new ExtractTextPlugin({
         filename: 'css/style.css',
         allChunks: true
-    }),
+    })
 ];
 
 if (isDevelopment) {

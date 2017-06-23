@@ -13,7 +13,7 @@ module.exports = new class App extends MatreshkaObject {
         super()
             .set({
                 configName: 'airbnb',
-                noErrors: false,
+                noErrors: false
             })
             .bindSandbox('body')
             .bindNode({
@@ -24,10 +24,10 @@ module.exports = new class App extends MatreshkaObject {
                     binder: codeMirror({
                         lineNumbers: true
                     })
-                },
+                }
             })
             .calc('chosenConfig', ['configName', 'configs'], (configName, configs) => {
-                if(!configName || !configs) {
+                if (!configName || !configs) {
                     return {};
                 }
 
@@ -50,46 +50,48 @@ module.exports = new class App extends MatreshkaObject {
                 messages: Messages,
                 environments: Environments
             })
-            .init()
+            .init();
 
         this.messages.calc('noErrors', { object: this, key: 'noErrors' });
     }
 
     async init() {
-        const { payload: { rulesList, configs } } = await ( await fetch('/api/init') ).json();
+        const { payload: { rulesList, configs } } = await (await fetch('/api/init')).json();
 
         this.configs = configs;
 
         this.rules.recreate(Object.entries(rulesList).map(([pluginName, value]) => ({
             pluginName,
             rules: value.map(name => ({ name, value: 'off' }))
-        })))
+        })));
     }
 
     async lint() {
-        if(!this.code) {
+        if (!this.code) {
             this.messages = [{
                 message: 'Code field value cannot be an empty string',
                 line: 1,
                 column: 1
-            }]
+            }];
 
             return this;
         }
 
-        const { payload: { messages, output } } = await( await fetch('/api/lint', {
+        const { payload: { messages, output } } = await (await fetch('/api/lint', {
             method: 'post',
             body: JSON.stringify({
                 code: this.code,
                 rules: this.rules,
-                envs: this.environments.toJSON(false).filter(({ checked }) => checked).map(({ environment }) => environment)
+                envs: this.environments.toJSON(false)
+                    .filter(({ checked }) => checked)
+                    .map(({ environment }) => environment)
             }),
             headers: {
                 'Content-Type': 'application/json'
             }
         })).json();
 
-        if(output) {
+        if (output) {
             this.code = output;
         }
 
@@ -98,4 +100,4 @@ module.exports = new class App extends MatreshkaObject {
 
         return this;
     }
-}
+}();

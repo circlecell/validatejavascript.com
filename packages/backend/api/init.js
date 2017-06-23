@@ -5,17 +5,18 @@ const jsxA11yPlugin = require('eslint-plugin-jsx-a11y');
 const airbnb = require('eslint-config-airbnb');
 const google = require('eslint-config-google');
 const standard = require('eslint-config-standard');
-const eslint = require("eslint/conf/eslint-recommended");
+const eslint = require('eslint/conf/eslint-recommended');
 
 function getRules(config) {
     const rules = {};
-    if(config.rules) {
+    if (config.rules) {
         Object.assign(rules, config.rules);
     }
 
-    if(config.extends) {
-        for(const configPath of config.extends) {
-            Object.assign(rules, getRules(require(configPath)))
+    if (config.extends) {
+        for (const configPath of config.extends) {
+            // eslint-disable-next-line import/no-dynamic-require
+            Object.assign(rules, getRules(require(configPath)));
         }
     }
 
@@ -33,8 +34,8 @@ const rulesList = {
     eslint: Object.keys(loadRules()),
     react: Object.keys(reactPlugin.rules),
     'jsx-a11y': Object.keys(jsxA11yPlugin.rules)
-}
+};
 
 module.exports = (req, res) => {
-    res.json({ payload: { rulesList, configs } })
-}
+    res.json({ payload: { rulesList, configs } });
+};

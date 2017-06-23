@@ -1,6 +1,6 @@
 import MatreshkaArray from 'matreshka/array';
 import RulesGroup from './RulesGroup';
-//import plugins from '../lint/plugins';
+// import plugins from '../lint/plugins';
 
 export default class Rules extends MatreshkaArray {
     Model = RulesGroup;
@@ -13,13 +13,13 @@ export default class Rules extends MatreshkaArray {
                 '*.*@rulechange': () => {
                     this.trigger('rulechange');
                 }
-            })
-            //.render()
-            //.recreate(plugins)
-            //.update(data);
+            });
+        // .render()
+        // .recreate(plugins)
+        // .update(data);
     }
 
-    /*async render() {
+    /* async render() {
         const { payload } = await ( await fetch('/api/init') ).json();
 
         this.recreate(Object.entries(payload).map(([pluginName, value]) => ({
@@ -29,8 +29,6 @@ export default class Rules extends MatreshkaArray {
     }*/
 
     update(config) {
-
-
         /* const groups = {};
         for(const [fullRuleName, value] of Object.entries(config)) {
             let [groupName, ruleName] = fullRuleName.split('/');
@@ -55,8 +53,8 @@ export default class Rules extends MatreshkaArray {
 
         return this;
 
-        //console.log(groups)
-        /*if (!rules) return this;
+        // console.log(groups)
+        /* if (!rules) return this;
 
         for (const group of this) {
             for (const rule of group) {
@@ -76,7 +74,7 @@ export default class Rules extends MatreshkaArray {
         const result = {};
         for (const group of this) {
             for (const { name, value, isOn } of group) {
-                if(isOn) {
+                if (isOn) {
                     result[group.getFullRuleName(name)] = value;
                 }
             }

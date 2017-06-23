@@ -4,7 +4,7 @@ import bindNode from 'matreshka/bindnode';
 import display from 'matreshka/binders/display';
 
 export default class Messages extends MatreshkaArray {
-    itemRenderer = `<pre class="result-item">{{ line }}:{{ column }} {{ type }} {{ message }}</pre>`;
+    itemRenderer = '<pre class="result-item">{{ line }}:{{ column }} {{ type }} {{ message }}</pre>';
     constructor(data, parent) {
         super()
             .bindNode({
@@ -16,7 +16,7 @@ export default class Messages extends MatreshkaArray {
                 }
             })
             .on('*@render', ({ self }) => {
-                calc(self, 'type', 'severity', severity => severity === 1 ? 'warning' : 'error');
+                calc(self, 'type', 'severity', severity => (severity === 1 ? 'warning' : 'error'));
                 bindNode(self, 'type', ':sandbox', {
                     setValue(type, { node }) {
                         node.classList.add(`result-${type}`);

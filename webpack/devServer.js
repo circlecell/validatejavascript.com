@@ -8,5 +8,5 @@ module.exports = {
     port: devPort,
     proxy: {
         '/api/*': `http://localhost:${port}`
-    },
-}
+    }
+};

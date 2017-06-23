@@ -14,7 +14,6 @@ export default class RulesGroup extends MatreshkaArray {
             .set(plugin)
             .recreate(plugin.rules)
             .rerender();
-
     }
 
     onRender() {
@@ -24,10 +23,10 @@ export default class RulesGroup extends MatreshkaArray {
     }
 
     getFullRuleName(ruleName) {
-        if(this.pluginName === 'eslint') {
+        if (this.pluginName === 'eslint') {
             return ruleName;
         }
 
-        return `${this.pluginName}/${ruleName}`
+        return `${this.pluginName}/${ruleName}`;
     }
 }

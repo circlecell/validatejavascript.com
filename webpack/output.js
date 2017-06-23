@@ -1,4 +1,4 @@
-const path = require('path')
+const path = require('path');
 
 module.exports = {
     path: path.resolve(__dirname, '../packages/backend/public/'),
@@ -6,5 +6,5 @@ module.exports = {
     library: 'app',
     libraryTarget: 'var',
     chunkFilename: 'js/[name].chunk.js',
-    publicPath: '/',
+    publicPath: '/'
 };
