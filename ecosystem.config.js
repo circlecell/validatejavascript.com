@@ -3,8 +3,8 @@ module.exports = {
       {
         "name"      : "validatejavascript.com",
         "script"    : "packages/backend/index.js",
-        "error_file": "/var/web/eslint.com/logs/err.log",
-        "out_file": "/var/web/eslint.com/logs/out.log",
+        "error_file": "/var/web/eslint.io/logs/err.log",
+        "out_file": "/var/web/eslint.io/logs/out.log",
         "env": {
             "NODE_ENV": "production",
             "PORT": "5004"
