@@ -77,8 +77,6 @@ module.exports = new class App extends MatreshkaObject {
             return this;
         }
 
-        console.log(this.environments.toJSON())
-
         const { payload: { messages, output } } = await( await fetch('/api/lint', {
             method: 'post',
             body: JSON.stringify({
