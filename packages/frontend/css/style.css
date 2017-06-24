@@ -983,6 +983,11 @@ button[type="reset"]:active {}
     border: 1px solid transparent;
     margin: 15px 0;
     padding: 0.8em;
+    white-space: normal;
+}
+
+.result-item a {
+    white-space: nowrap;
 }
 
 .result-item:empty {

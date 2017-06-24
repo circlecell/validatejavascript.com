@@ -62,7 +62,7 @@ module.exports = new class App extends MatreshkaObject {
 
         this.rules.recreate(Object.entries(rulesList).map(([pluginName, value]) => ({
             pluginName,
-            rules: value.map(name => ({ name, value: 'off' }))
+            rules: value.map(({ name, docs }) => ({ name, docs, value: 'off' }))
         })));
     }
 

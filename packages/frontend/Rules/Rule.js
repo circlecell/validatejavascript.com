@@ -1,8 +1,16 @@
 import MatreshkaObject from 'matreshka/object';
 
 export default class Rule extends MatreshkaObject {
-    renderer = `<label title="{{ dynamicValueJSON }}" class="col-md-4 col-sm-6 col-xs-12 form-check-label">
-        <input type="checkbox" checked="{{ isOn }}"> {{ name }}
+    renderer = ({ docs, name }) => `<label
+        title="${docs.description || ''}"
+        class="col-md-4 col-sm-6 col-xs-12 form-check-label"
+    >
+        <input
+            title="{{ dynamicValueJSON }}"
+            type="checkbox"
+            checked="{{ isOn }}"
+        >
+        ${name}
     </label>`;
     constructor(data) {
         super(data)
