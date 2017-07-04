@@ -1117,6 +1117,8 @@ input:checked + label {
   width: 100%;
   padding: 20px 30px 0;
   clear: both;
+  height: 300px;
+  overflow: auto;
 }
 
 @media screen and (max-width: 1000px) {

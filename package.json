@@ -1,5 +1,5 @@
 {
-  "name": "eslint.io",
+  "name": "validatejavascript.com",
   "version": "0.0.0-auto",
   "private": true,
   "description": "A browser version of ESLint",
@@ -43,7 +43,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/circlecell/eslint.io.git"
+    "url": "https://github.com/circlecell/validatejavascript.com.git"
   },
   "keywords": [
     "eslint",
@@ -53,9 +53,9 @@
   "author": "Circlecell",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/circlecell/eslint.io/issues"
+    "url": "https://github.com/circlecell/validatejavascript.com/issues"
   },
-  "homepage": "https://github.com/circlecell/eslint.io#readme",
+  "homepage": "https://github.com/circlecell/validatejavascript.com#readme",
   "devDependencies": {
     "babel-core": "^6.25.0",
     "babel-eslint": "^7.2.3",
