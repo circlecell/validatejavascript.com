@@ -1110,14 +1110,13 @@ input:checked + label {
 }
 
 .settings {
-    display: block;
-    background: #f7f7f7;
-    border-radius: 2px;
-    border: 1px solid #e1e1e1;
-    height: 310px;
-    width: 100%;
-    overflow: auto;
-    padding: 20px 30px 0;
+  display: block;
+  background: #f7f7f7;
+  border-radius: 2px;
+  border: 1px solid #e1e1e1;
+  width: 100%;
+  padding: 20px 30px 0;
+  clear: both;
 }
 
 @media screen and (max-width: 1000px) {
