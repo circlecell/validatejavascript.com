@@ -62,6 +62,12 @@ module.exports = new class App extends MatreshkaObject {
             })
             .init();
 
+        this.nodes.code.nextElementSibling.CodeMirror.addKeyMap({
+            'Ctrl-Enter': () => this.lint(),
+            'Cmd-Enter': () => this.lint(),
+            'Cmd-A': inst => inst.execCommand('selectAll')
+        });
+
         this.messages.calc('noErrors', { object: this, key: 'noErrors' });
     }
 

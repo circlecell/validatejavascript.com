@@ -4,7 +4,7 @@ import bindNode from 'matreshka/bindnode';
 import display from 'matreshka/binders/display';
 
 export default class Messages extends MatreshkaArray {
-    itemRenderer = '<pre class="result-item">{{ line }}:{{ column }} {{ type }} {{ message }} (<a href="{{ link }}" target="_blank">{{ ruleId }}</a>) </pre>';
+    itemRenderer = '<pre class="result-item">{{ line }}:{{ column }} {{ type }} {{ message }} <span class="result-link">(<a href="{{ link }}" target="_blank">{{ ruleId }}</a>)</span> </pre>';
     constructor(data, parent) {
         super()
             .bindNode({
@@ -18,7 +18,12 @@ export default class Messages extends MatreshkaArray {
             .on('*@render', ({ self }) => {
                 calc(self, 'type', 'severity', severity => (severity === 1 ? 'warning' : 'error'));
                 calc(self, 'link', 'ruleId', (ruleId) => {
+                    if (!ruleId) {
+                        return null;
+                    }
+
                     const [groupName, ruleName] = ruleId.split('/');
+
                     if (!ruleName) {
                         return `http://eslint.org/docs/rules/${groupName}`;
                     }
@@ -38,6 +43,8 @@ export default class Messages extends MatreshkaArray {
                         node.classList.add(`result-${type}`);
                     }
                 });
+
+                bindNode(self, 'link', ':sandbox .result-link', display());
             });
     }
 }
