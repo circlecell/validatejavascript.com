@@ -3,7 +3,7 @@ const stripAnsi = require('strip-ansi');
 
 const lint = (code, {
     envs,
-    fix = true,
+    fix,
     rules
 }) => new CLIEngine({
     envs,
@@ -16,8 +16,8 @@ const lint = (code, {
     .executeOnText(code).results[0];
 
 module.exports = (req, res) => {
-    const { code, rules, envs } = req.body;
-    const result = lint(code, { rules, envs });
+    const { code, rules, envs, fix } = req.body;
+    const result = lint(code, { rules, envs, fix });
 
     result.messages.forEach((message) => {
         // eslint-disable-next-line no-param-reassign

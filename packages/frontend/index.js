@@ -1,6 +1,7 @@
 import 'babel-polyfill';
 
 import MatreshkaObject from 'matreshka/object';
+import display from 'matreshka/binders/display';
 import codeMirror from 'matreshka-binder-codemirror';
 import 'codemirror/mode/javascript/javascript';
 
@@ -13,11 +14,20 @@ module.exports = new class App extends MatreshkaObject {
         super()
             .set({
                 configName: 'airbnb',
-                noErrors: false
+                noErrors: false,
+                fix: true
             })
             .bindSandbox('body')
             .bindNode({
                 configName: ':sandbox .config-name',
+                fix: [{
+                    node: ':sandbox .autofix'
+                },
+                {
+                    node: ':sandbox .and-fix-button-text',
+                    binder: display()
+                }
+                ],
                 form: ':sandbox #main',
                 code: {
                     node: ':sandbox #code',
@@ -82,6 +92,7 @@ module.exports = new class App extends MatreshkaObject {
             body: JSON.stringify({
                 code: this.code,
                 rules: this.rules,
+                fix: this.fix,
                 envs: this.environments.toJSON(false)
                     .filter(({ checked }) => checked)
                     .map(({ environment }) => environment)

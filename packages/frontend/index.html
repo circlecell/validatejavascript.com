@@ -62,21 +62,26 @@
             <div class="result-errors"></div>
         </section>
 
-        <button type="submit" class="btn btn-primary left" form="main">Find &amp; Fix JavaScript Errors</button>
+        <button type="submit" class="btn btn-primary left" form="main">Find <span class="and-fix-button-text">&amp; Fix</span> JavaScript Errors</button>
 
         <div class="settings" id="tabs-content-1">
             <fieldset>
-                <legend>Settings</legend>
-                <div class="form-group left">
-                    <label><strong>Config:</strong></label>
-                    <select class="config-name form-control">
-                        <option value="">Custom</option>
-                        <option value="airbnb">airbnb</option>
-                        <option value="eslint">eslint</option>
-                        <option value="google">google</option>
-                        <option value="standard">standard</option>
-                    </select>
-                </div>
+              <legend>Settings</legend>
+              <div class="form-group left">
+                  <label><strong>Config:</strong></label>
+                  <select class="config-name form-control">
+                      <option value="">Custom</option>
+                      <option value="airbnb">airbnb</option>
+                      <option value="eslint">eslint</option>
+                      <option value="google">google</option>
+                      <option value="standard">standard</option>
+                  </select>
+              </div>
+              <div class="form-group left">
+                  <label>
+                    <input type="checkbox" class="autofix"> <strong>Automatically fix</strong>
+                  </label>
+              </div>
             </fieldset>
             <hr>
             <fieldset>
