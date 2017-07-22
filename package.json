@@ -91,5 +91,8 @@
     "validate-commit-msg": "^2.13.0",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.6.0"
+  },
+  "dependencies": {
+    "loglevel": "^1.4.1"
   }
 }
