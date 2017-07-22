@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm run lint",
-    "install-all": "npm -v && npm i && lerna exec --concurrency 1 -- npm -v && lerna exec --concurrency 1 -- npm i",
+    "install-all": "npm -v && rm -r node_modules && npm i && lerna exec --concurrency 1 -- npm -v && lerna exec --concurrency 1 -- rm -r node_modules  && lerna exec --concurrency 1 -- npm i",
     "build-eslint": "rimraf eslint && npm run clone-eslint && npm run webpackify-eslint && cd eslint && npm install --production",
     "clone-eslint": "git clone https://github.com/eslint/eslint.git eslint",
     "webpackify-eslint": "node tools/webpackify-eslint",
