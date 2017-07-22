@@ -65,6 +65,7 @@
     "concurrently": "^3.5.0",
     "copy-webpack-plugin": "^4.0.1",
     "css-loader": "^0.28.4",
+    "errno": "^0.1.4",
     "eslint": "^4.3.0",
     "eslint-config-airbnb-base": "^11.2.0",
     "eslint-plugin-import": "^2.7.0",
@@ -90,9 +91,7 @@
     "style-loader": "^0.18.2",
     "validate-commit-msg": "^2.13.0",
     "webpack": "^3.3.0",
-    "webpack-dev-server": "^2.6.0"
-  },
-  "dependencies": {
+    "webpack-dev-server": "^2.6.0",
     "loglevel": "^1.4.1"
   }
 }
