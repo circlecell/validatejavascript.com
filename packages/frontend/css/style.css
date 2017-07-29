@@ -986,6 +986,12 @@ button[type="reset"]:active {}
     white-space: normal;
 }
 
+.result-item .position {
+  text-decoration: underline;
+  text-decoration-style: dotted;
+  cursor: pointer;
+}
+
 .result-item a {
     white-space: nowrap;
 }

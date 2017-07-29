@@ -36,6 +36,9 @@ module.exports = new class App extends MatreshkaObject {
                     })
                 }
             })
+            .set({
+                editor: this.nodes.code.nextElementSibling.CodeMirror
+            })
             .calc('chosenConfig', ['configName', 'configs'], (configName, configs) => {
                 if (!configName || !configs) {
                     return {};
@@ -53,6 +56,10 @@ module.exports = new class App extends MatreshkaObject {
                 },
                 'change:code': () => {
                     this.noErrors = false;
+                },
+                'messages.*@click::(.position)': ({ self: { line, column } }) => {
+                    this.editor.setCursor({ line: line - 1, ch: column - 1 });
+                    this.editor.focus();
                 }
             })
             .instantiate({
@@ -62,7 +69,8 @@ module.exports = new class App extends MatreshkaObject {
             })
             .init();
 
-        this.nodes.code.nextElementSibling.CodeMirror.addKeyMap({
+
+        this.editor.addKeyMap({
             'Ctrl-Enter': () => this.lint(),
             'Cmd-Enter': () => this.lint(),
             'Cmd-A': inst => inst.execCommand('selectAll')
