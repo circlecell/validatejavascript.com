@@ -45,6 +45,8 @@ plugins.push(
     new CopyWebpackPlugin([{
         from: './packages/frontend/icons',
         to: './icons'
+    }, {
+        from: './packages/frontend/privacy-policy.html'
     }])
 );
 
