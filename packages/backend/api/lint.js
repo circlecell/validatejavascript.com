@@ -1,4 +1,4 @@
-const CLIEngine = require('eslint').CLIEngine;
+const { CLIEngine } = require('eslint');
 const stripAnsi = require('strip-ansi');
 
 const lint = (code, {
@@ -16,7 +16,9 @@ const lint = (code, {
     .executeOnText(code).results[0];
 
 module.exports = (req, res) => {
-    const { code, rules, envs, fix } = req.body;
+    const {
+        code, rules, envs, fix
+    } = req.body;
     const result = lint(code, { rules, envs, fix });
 
     result.messages.forEach((message) => {

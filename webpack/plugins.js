@@ -32,22 +32,18 @@ if (isDevelopment) {
         })
     );
 } else if (isProduction) {
-    plugins.push(
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false
-            }
-        })
-    );
+    plugins.push(new webpack.optimize.UglifyJsPlugin({
+        compress: {
+            warnings: false
+        }
+    }));
 }
 
-plugins.push(
-    new CopyWebpackPlugin([{
-        from: './packages/frontend/icons',
-        to: './icons'
-    }, {
-        from: './packages/frontend/privacy-policy.html'
-    }])
-);
+plugins.push(new CopyWebpackPlugin([{
+    from: './packages/frontend/icons',
+    to: './icons'
+}, {
+    from: './packages/frontend/privacy-policy.html'
+}]));
 
 module.exports = plugins;
