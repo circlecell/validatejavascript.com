@@ -3,6 +3,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
 const { isDevelopment, isProduction, devPort } = require('./env');
 
@@ -32,11 +33,7 @@ if (isDevelopment) {
         })
     );
 } else if (isProduction) {
-    plugins.push(new webpack.optimize.UglifyJsPlugin({
-        compress: {
-            warnings: false
-        }
-    }));
+    plugins.push(new UglifyJsPlugin());
 }
 
 plugins.push(new CopyWebpackPlugin([{
