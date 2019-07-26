@@ -13,9 +13,9 @@
     "dev": "NODE_ENV=development PORT=8014 concurrently --kill-others 'nodemon ./packages/backend --watch packages/backend' 'webpack-dev-server --no-info --config webpack --mode=development'",
     "build": "NODE_ENV=production webpack --config webpack --display-error-details --mode=production",
     "upgrade": "rimraf package-lock.json && ncu -u && npm install && lerna exec --concurrency 1 -- rimraf package-lock.json && lerna exec --concurrency 1 -- ncu -u && lerna exec -- npm install",
-    "semantic-release": "semantic-release pre && ssh-keyscan 192.241.157.86 >> ~/.ssh/known_hosts && npm run deploy && semantic-release post",
+    "release": "ssh-keyscan 192.241.157.86 >> ~/.ssh/known_hosts && npm run deploy",
     "deploy": "pm2 deploy ecosystem.config.js production --force",
-    "travis-deploy": "if-env TRAVIS_BRANCH=master TRAVIS_PULL_REQUEST=false && npm run semantic-release || echo 'Deploy is not run'",
+    "travis-deploy": "if-env TRAVIS_BRANCH=master TRAVIS_PULL_REQUEST=false && npm run release || echo 'Deploy is not run'",
     "lint": "eslint .",
     "open-browser": "opn http://localhost:$PORT",
     "try-production": "NODE_ENV=production PORT=8016 concurrently 'npm run open-browser' 'node ./packages/backend'",
@@ -37,9 +37,6 @@
     "ghooks": {
       "commit-msg": "validate-commit-msg"
     }
-  },
-  "release": {
-    "getLastRelease": "last-release-git"
   },
   "repository": {
     "type": "git",
@@ -74,7 +71,6 @@
     "ghooks": "^2.0.4",
     "html-webpack-plugin": "^3.2.0",
     "if-env": "^1.0.4",
-    "last-release-git": "0.0.3",
     "lerna": "^3.16.4",
     "loglevel": "^1.6.3",
     "nodemon": "^1.19.1",
@@ -87,7 +83,6 @@
     "postcss-loader": "^3.0.0",
     "postcss-nested": "^4.1.2",
     "rimraf": "^2.6.3",
-    "semantic-release": "^15.13.18",
     "semver": "^6.3.0",
     "style-loader": "^0.23.1",
     "uglifyjs-webpack-plugin": "^2.1.3",
