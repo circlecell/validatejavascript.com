@@ -1043,11 +1043,16 @@ fieldset {
     margin: 0 5px 0 0;
 }
 
-.settings legend {
+.settings legend, .settings summary {
     font-size: 14px;
     font-weight: 700;
     padding: 0 0 10px;
     letter-spacing: 0.5px;
+}
+
+.settings summary {
+    outline: none;
+    cursor: pointer;
 }
 
 .settings label {

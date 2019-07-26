@@ -2,7 +2,7 @@ import MatreshkaArray from 'matreshka/array';
 import Rule from './Rule';
 
 export default class RulesGroup extends MatreshkaArray {
-    Model = Rule;
+  get Model() { return Rule; }
 
     renderer = `<fieldset>
         <legend>Rules: {{ pluginName }}</legend>
@@ -10,23 +10,23 @@ export default class RulesGroup extends MatreshkaArray {
     </fieldset>`;
 
     constructor(plugin) {
-        super()
-            .set(plugin)
-            .recreate(plugin.rules)
-            .rerender();
+      super()
+        .set(plugin)
+        .recreate(plugin.rules)
+        .rerender();
     }
 
     onRender() {
-        this
-            .bindNode('container', ':sandbox .rules-list')
-            .rerender();
+      this
+        .bindNode('container', ':sandbox .rules-list')
+        .rerender();
     }
 
     getFullRuleName(ruleName) {
-        if (this.pluginName === 'eslint') {
-            return ruleName;
-        }
+      if (this.pluginName === 'eslint') {
+        return ruleName;
+      }
 
-        return `${this.pluginName}/${ruleName}`;
+      return `${this.pluginName}/${ruleName}`;
     }
 }
