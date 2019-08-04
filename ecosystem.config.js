@@ -22,7 +22,7 @@ module.exports = {
       repo: 'git@github.com:circlecell/validatejavascript.com.git',
       path: '/var/web/validatejavascript.com',
       ssh_options: ['StrictHostKeyChecking=no', 'PasswordAuthentication=no'],
-      'post-deploy': 'npm run install-all && npm run build && npm start',
+      'post-deploy': 'npm run ci-all && npm run build && npm start',
     },
   },
 };
