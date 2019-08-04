@@ -31,8 +31,12 @@ export default class Rules extends MatreshkaArray {
     const result = {};
     for (const group of this) {
       for (const { name, value, isOn } of group) {
+        let val = value instanceof Array ? value[0] : value;
+        // force error value if a rule is on
+        val = (val === 'off' || val === 0) && isOn ? 'error' : value;
+
         if (isOn) {
-          result[group.getFullRuleName(name)] = value;
+          result[group.getFullRuleName(name)] = val;
         }
       }
     }

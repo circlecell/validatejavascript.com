@@ -3,7 +3,7 @@ import 'babel-polyfill';
 import MatreshkaObject from 'matreshka/object';
 import display from 'matreshka/binders/display';
 import codeMirror from 'matreshka-binder-codemirror';
-import 'codemirror/mode/javascript/javascript';
+import 'codemirror/mode/jsx/jsx';
 
 import Rules from './Rules';
 import Messages from './Messages';
@@ -13,9 +13,9 @@ export default new class App extends MatreshkaObject {
   constructor() {
     super()
       .set({
-        configName: 'airbnb',
+        configName: JSON.parse(localStorage.configName || '"airbnb"'),
+        fix: JSON.parse(localStorage.fix || 'true'),
         noErrors: false,
-        fix: true,
       })
       .bindSandbox('body')
       .bindNode({
@@ -33,6 +33,7 @@ export default new class App extends MatreshkaObject {
           node: ':sandbox #code',
           binder: codeMirror({
             lineNumbers: true,
+            mode: 'jsx',
           }),
         },
       })
@@ -62,13 +63,18 @@ export default new class App extends MatreshkaObject {
           this.editor.focus();
         },
       })
+      .onDebounce('rules@rulechange change:configName change:fix', ({ skipStorage } = {}) => {
+        if (skipStorage) return;
+        localStorage.rules = JSON.stringify(this.rules);
+        localStorage.configName = JSON.stringify(this.configName);
+        localStorage.fix = JSON.stringify(this.fix);
+      }, 200)
       .instantiate({
         rules: Rules,
         messages: Messages,
         environments: Environments,
       })
       .init();
-
 
     this.editor.addKeyMap({
       'Ctrl-Enter': () => this.lint(),
@@ -88,6 +94,10 @@ export default new class App extends MatreshkaObject {
       pluginName,
       rules: value.map(({ name, docs }) => ({ name, docs, value: 'off' })),
     })));
+
+    if (localStorage.rules) {
+      setTimeout(() => this.rules.update(JSON.parse(localStorage.rules)));
+    }
   }
 
   async lint() {
