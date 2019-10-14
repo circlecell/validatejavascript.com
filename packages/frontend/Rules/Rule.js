@@ -18,7 +18,7 @@ export default class Rule extends MatreshkaObject {
         .calc({
           value: {
             source: 'valueJSON',
-            handler: value => (value ? JSON.parse(value) : 0),
+            handler: (value) => (value ? JSON.parse(value) : 0),
           },
           isOn: {
             source: 'value',
@@ -46,7 +46,7 @@ export default class Rule extends MatreshkaObject {
           },
           dynamicValueJSON: {
             source: 'dynamicValue',
-            handler: value => JSON.stringify(value, null, '\t'),
+            handler: (value) => JSON.stringify(value, null, '\t'),
           },
         })
         .on('click::isOn', () => this.trigger('rulechange'));

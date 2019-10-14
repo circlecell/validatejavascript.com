@@ -6,7 +6,7 @@ export default class Message extends MatreshkaObject {
 
   constructor(data) {
     super(data)
-      .calc('type', 'severity', severity => (severity === 1 ? 'warning' : 'error'))
+      .calc('type', 'severity', (severity) => (severity === 1 ? 'warning' : 'error'))
       .calc('link', 'ruleId', (ruleId) => {
         if (!ruleId) {
           return null;

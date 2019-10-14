@@ -79,7 +79,7 @@ export default new class App extends MatreshkaObject {
     this.editor.addKeyMap({
       'Ctrl-Enter': () => this.lint(),
       'Cmd-Enter': () => this.lint(),
-      'Cmd-A': inst => inst.execCommand('selectAll'),
+      'Cmd-A': (inst) => inst.execCommand('selectAll'),
     });
 
     this.messages.calc('noErrors', { object: this, key: 'noErrors' });
