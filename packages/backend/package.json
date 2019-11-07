@@ -11,7 +11,7 @@
   "dependencies": {
     "babel-eslint": "^10.0.3",
     "body-parser": "^1.19.0",
-    "eslint": "^6.5.1",
+    "eslint": "^6.6.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-google": "^0.14.0",
     "eslint-config-standard": "^14.1.0",
