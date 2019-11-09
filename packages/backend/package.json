@@ -19,6 +19,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.16.0",
     "express": "^4.17.1",
-    "strip-ansi": "^5.2.0"
+    "strip-ansi": "^6.0.0"
   }
 }
