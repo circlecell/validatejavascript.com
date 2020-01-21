@@ -1,5 +1,5 @@
-import MatreshkaArray from 'matreshka/array';
-import display from 'matreshka/binders/display';
+import MatreshkaArray from 'seemple/array';
+import { display } from 'seemple/binders';
 import Message from './Message';
 
 export default class Messages extends MatreshkaArray {

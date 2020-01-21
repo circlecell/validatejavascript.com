@@ -1,4 +1,4 @@
-import MatreshkaArray from 'matreshka/array';
+import MatreshkaArray from 'seemple/array';
 import Rule from './Rule';
 
 export default class RulesGroup extends MatreshkaArray {

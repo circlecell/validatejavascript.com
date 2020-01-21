@@ -1,8 +1,8 @@
 import 'babel-polyfill';
 
-import MatreshkaObject from 'matreshka/object';
-import display from 'matreshka/binders/display';
-import codeMirror from 'matreshka-binder-codemirror';
+import MatreshkaObject from 'seemple/object';
+import { display } from 'seemple/binders';
+import codeMirror from 'codemirror-binder';
 import 'codemirror/mode/jsx/jsx';
 
 import Rules from './Rules';

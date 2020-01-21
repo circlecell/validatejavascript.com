@@ -1,5 +1,5 @@
-import MatreshkaObject from 'matreshka/object';
-import display from 'matreshka/binders/display';
+import MatreshkaObject from 'seemple/object';
+import { display } from 'seemple/binders';
 
 export default class Message extends MatreshkaObject {
   renderer = '<pre class="result-item"><span class="position" title="Go to the line">{{ line }}:{{ column }}</span> {{ type }} {{ message }} <span class="result-link">(<a href="{{ link }}" target="_blank">{{ ruleId }}</a>)</span> </pre>';

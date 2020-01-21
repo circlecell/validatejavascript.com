@@ -1,4 +1,4 @@
-import MatreshkaArray from 'matreshka/array';
+import MatreshkaArray from 'seemple/array';
 
 const environments = {
   browser: 'browser global variables.',

@@ -1,4 +1,4 @@
-import MatreshkaObject from 'matreshka/object';
+import MatreshkaObject from 'seemple/object';
 
 export default class Rule extends MatreshkaObject {
     renderer = ({ docs, name }) => `<label
