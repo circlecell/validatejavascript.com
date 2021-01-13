@@ -9,7 +9,6 @@ if (isDevelopment) {
 }
 
 entry.app.push(
-  './packages/frontend/css/style.css',
   './packages/frontend/index',
 );
 

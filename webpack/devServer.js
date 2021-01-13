@@ -9,4 +9,5 @@ module.exports = {
   proxy: {
     '/api/*': `http://localhost:${port}`,
   },
+  open: true,
 };

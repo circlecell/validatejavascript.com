@@ -1,11 +1,9 @@
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 
-const { isDevelopment, isProduction, devPort } = require('./env');
+const { isDevelopment, isProduction } = require('./env');
 
 const plugins = [
   new HtmlWebpackPlugin({
@@ -18,24 +16,18 @@ const plugins = [
       return order.indexOf(nameA) - order.indexOf(nameB);
     },
   }),
-  new ExtractTextPlugin({
-    filename: 'css/style.css',
-    allChunks: true,
-  }),
 ];
 
 if (isDevelopment) {
   plugins.push(
     new webpack.HotModuleReplacementPlugin(),
-    new OpenBrowserPlugin({
-      url: `http://localhost:${devPort}`,
-      ignoreErrors: true,
-    }),
   );
 } else if (isProduction) {
   plugins.push(new UglifyJsPlugin());
 }
 
-plugins.push(new CopyWebpackPlugin([{ from: './packages/frontend/static' }]));
+plugins.push(new CopyWebpackPlugin({
+  patterns: [{ from: './packages/frontend/static' }],
+}));
 
 module.exports = plugins;
