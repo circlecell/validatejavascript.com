@@ -28,7 +28,6 @@ const environments = {
   greasemonkey: 'GreaseMonkey globals.',
 };
 
-
 export default class Environments extends MatreshkaArray {
     itemRenderer = `
         <label title="{{ description }}" class="form-check-label">
