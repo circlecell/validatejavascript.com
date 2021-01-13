@@ -12,7 +12,7 @@
     "clone-eslint": "git clone https://github.com/eslint/eslint.git eslint",
     "webpackify-eslint": "node tools/webpackify-eslint",
     "dev": "NODE_ENV=development PORT=8014 concurrently --kill-others 'nodemon ./packages/backend --watch packages/backend' 'webpack serve --config webpack --mode=development'",
-    "build": "NODE_ENV=production webpack --config webpack --display-error-details --mode=production",
+    "build": "NODE_ENV=production webpack --config webpack --mode=production",
     "upgrade": "rimraf package-lock.json && ncu -u && npm install && lerna exec --concurrency 1 -- rimraf package-lock.json && lerna exec --concurrency 1 -- ncu -u && lerna exec -- npm install",
     "release": "ssh-keyscan 192.241.157.86 >> ~/.ssh/known_hosts && npm run deploy",
     "deploy": "pm2 deploy ecosystem.config.js production --force",
